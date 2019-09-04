@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
-    <title>Gridea</title>
-    <updated>2019-09-03T15:25:12.866Z</updated>
+    <title>小张的网站</title>
+    <updated>2019-09-04T07:34:23.316Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
     <subtitle>温故而知新</subtitle>
     <logo>https://zy-zzf2000.github.io//images/avatar.png</logo>
     <icon>https://zy-zzf2000.github.io//favicon.ico</icon>
-    <rights>All rights reserved 2019, Gridea</rights>
-    <entry>
-        <title type="html"><![CDATA[想要对你说的一些话...]]></title>
-        <id>https://zy-zzf2000.github.io//post/xiang-yao-dui-ni-shuo-de-yi-xie-hua</id>
-        <link href="https://zy-zzf2000.github.io//post/xiang-yao-dui-ni-shuo-de-yi-xie-hua">
-        </link>
-        <updated>2019-09-03T15:17:25.000Z</updated>
-        <content type="html"><![CDATA[<p>To be continue</p>
-]]></content>
-    </entry>
+    <rights>All rights reserved 2019, 小张的网站</rights>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://zy-zzf2000.github.io//post/hello-gridea</id>
