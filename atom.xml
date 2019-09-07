@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-09-05T15:53:09.056Z</updated>
+    <updated>2019-09-07T09:36:35.611Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
@@ -100,7 +100,7 @@ public class Calc {
         <id>https://zy-zzf2000.github.io//post/about</id>
         <link href="https://zy-zzf2000.github.io//post/about">
         </link>
-        <updated>2019-01-25T11:09:48.000Z</updated>
+        <updated>2019-08-31T11:09:48.000Z</updated>
         <content type="html"><![CDATA[<p>这个博客主要用来记录学习<em>Algorithm 4th</em>及<em>java web</em>的学习过程，有时也会用于分享一些生活的感受。</p>
 ]]></content>
     </entry>
