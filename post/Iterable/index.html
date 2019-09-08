@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Hello Gridea | 小张的网站</title>
+<title>Java语言中如何使一个类可迭代 | 小张的网站</title>
 <meta name="description" content="莫道君行早，更有早行人">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -98,45 +98,112 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Hello Gridea</h2>
-            <div class="post-date">2019-09-01</div>
-            
-              <div class="feature-container" style="background-image: url('https://zy-zzf2000.github.io//post-images/hello-gridea.png')">
-              </div>
+            <h2 class="post-title">Java语言中如何使一个类可迭代</h2>
+            <div class="post-date">2019-09-08</div>
             
             <div class="post-content">
-              <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="http://hvenotes.fehey.com/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>𝖶𝗂𝗇𝖽𝗈𝗐𝗌</strong> 或 <strong>𝖬𝖺𝖼𝖮𝖲</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+              <h1 id="1在该类的声明中加入implements-iterable-item-实现iterable接口">（1）在该类的声明中加入implements Iterable&lt; Item &gt;(实现Iterable接口）</h1>
+<p>其中，对应的接口（java.lang.Iterable)为：</p>
+<pre><code class="language-java">public interface Iterable&lt;Item&gt;{
+	Iterator&lt;Item&gt; iterator();
+}
+</code></pre>
+<hr>
+<h1 id="2在该类内定义一个嵌套类嵌套类需实现iterator接口">(2)在该类内定义一个嵌套类，嵌套类需实现Iterator接口。</h1>
+<p>其中，对应的接口（java.util.Itearot)为：</p>
+<pre><code class="language-java">public interface Iterator&lt;Item&gt;{
+boolean hasNext();
+Item next();
+void remove();
+}
+</code></pre>
+<hr>
+<h1 id="3一个实现了可迭代的下压栈">(3)一个实现了可迭代的下压栈</h1>
+<p>在这个例子中：</p>
+<ul>
+<li>栈顶的元素总是保存在a [ N-1 ]中（除非栈为空）</li>
+<li>事实上，用链表实现栈更为简单，性能应该也更好</li>
+</ul>
+<pre><code class="language-java">import java.util.Iterator;
+
+public class ResizingArrayStack&lt;Item&gt; implements Iterable&lt;Item&gt;{
+	private Item[] a=(Item[]) new Object[1];  //a用于保存压入栈中的元素，初始大小为1
+	private int N=0;//栈中元素数量
+	
+	public boolean isEmpty() {
+		return N==0;
+	}
+	
+	public int size() {
+		return N;
+	}
+	
+	private void resize(int num) {//将栈移动到一个大小为num的数组
+		Item[] temp=(Item[]) new Object[num];//java语言不支持创建泛型数组，因此只能使用强制类型转换	
+		for(int i=0;i&lt;N;i++) {
+			temp[i]=a[i];
+		}
+		a=temp;
+	}
+	
+	public void push(Item item) {//将元素压入栈中
+		if(N==a.length) {
+			resize(2*a.length);
+		}
+		a[N++]=item;
+	}
+	
+	public Item pop() {//从栈顶弹出元素
+		Item item=a[--N];
+		a[N]=null;//覆盖a[N]的引用，让java垃圾收集器回收弹出元素所占的空间
+		if(N&gt;0&amp;&amp;N==a.length/4) {//避免开辟的数组空间过大而造成浪费
+			resize(a.length/2);
+		}
+		return item;
+	}
+	
+	public Iterator&lt;Item&gt; iterator(){
+		return new ReverseArrayIterator();
+	}
+	
+	//这是一个逆向迭代数组的迭代子，因为栈总是后进先出
+	private class ReverseArrayIterator implements Iterator&lt;Item&gt;{
+		private int i=N;
+		
+		public boolean hasNext() {
+			return i&gt;0;
+		}
+		
+		public Item next() {
+			return a[--i];
+		}
+		
+		public void remove() {
+			//书上的说法是remove方法总为空，避免迭代时修改数据结构的操作，好吧...
+		}	
+	}	
+}
+</code></pre>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://zy-zzf2000.github.io//tag/kGqjFl7Pg" class="tag">
-                    Gridea
+                  <a href="https://zy-zzf2000.github.io//tag/jmC06bpXo" class="tag">
+                    算法
                   </a>
                 
               </div>
             
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zy-zzf2000.github.io//post/SimpleStack">
+                  <h3 class="post-title">
+                    栈的简单应用——双栈法实现算数表达式求值
+                  </h3>
+                </a>
+              </div>
             
 
             
