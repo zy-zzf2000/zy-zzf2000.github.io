@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-09-09T15:50:40.513Z</updated>
+    <updated>2019-09-09T15:51:33.955Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
@@ -39,8 +39,7 @@
 		return id[p]==id[q];
 	}
 	
-	public void union(int p,int q) {//实现将pq相连的方法，在这里，我们让数组中//所有值等于id【p】的索引的值都改为id【q】，
-	//因为一个元素如果与连通分支中的一个元素相连，那么它与该连通分支的其他//元素也相连
+	public void union(int p,int q) {//实现将pq相连的方法，在这里，我们让数组中所有值等于id【p】的索引的值都改为id【q】，因为一个元素如果与连通分支中的一个元素相连，那么它与该连通分支的其他元素也相连。
 		int pid=id[p];
 		int qid=id[q];
 		for(int i=0;i&lt;id.length;i++) {
