@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-09-09T15:48:37.905Z</updated>
+    <updated>2019-09-09T15:50:40.513Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
@@ -17,7 +17,7 @@
         </link>
         <updated>2019-09-09T15:19:45.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
-<p>Union FInd，在我个人的理解，就是点与点之间是否互相连通的问题。具体关于问题的描述，可以<a href="https://blog.csdn.net/guoziqing506/article/details/78752557">参考这里</a>动态连接性的前三段，或者Algorithm 4th的P136-1.5.1</p>
+<p>Union FInd，在我个人的理解，就是点与点之间是否互相连通的问题。具体关于问题的描述，可以<a href="https://blog.csdn.net/guoziqing506/article/details/78752557">参考这里</a>动态连通性的前三段，或者Algorithm 4th的P136-1.5.1</p>
 </blockquote>
 <h1 id="1quick-find实现的基本想法">（1）Quick Find实现的基本想法：</h1>
 <p>通过一个整数数组来保存图中所有的点及它们之间的关系，更具体来说，两个点P与Q是连通的，当且仅当索引P与索引Q在数组中所对应的项是相同的。这样说可能有点难以理解，下面看一个例子：<br>
@@ -39,9 +39,8 @@
 		return id[p]==id[q];
 	}
 	
-	public void union(int p,int q) {//实现将pq相连的方法，在这里，我们让数组中所有值等于id【p】
-//的索引的值都改为id【q】，因为一个元素如果与连通分支中的一个元素相连，
-//那么它与该连通分支的其他元素也相连
+	public void union(int p,int q) {//实现将pq相连的方法，在这里，我们让数组中//所有值等于id【p】的索引的值都改为id【q】，
+	//因为一个元素如果与连通分支中的一个元素相连，那么它与该连通分支的其他//元素也相连
 		int pid=id[p];
 		int qid=id[q];
 		for(int i=0;i&lt;id.length;i++) {
