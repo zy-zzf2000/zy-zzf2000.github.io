@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>栈的简单应用——双栈法实现算数表达式求值 | 小张的网站</title>
+<title>Union Find 的Quick Find实现 | 小张的网站</title>
 <meta name="description" content="莫道君行早，更有早行人">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -98,66 +98,62 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">栈的简单应用——双栈法实现算数表达式求值</h2>
-            <div class="post-date">2019-09-04</div>
+            <h2 class="post-title">Union Find 的Quick Find实现</h2>
+            <div class="post-date">2019-09-09</div>
             
             <div class="post-content">
-              <p>通过简单的机制处理由（）、+、-、* 所组成表达式的优先级运算</p>
- <!-- more --> 
+              <blockquote>
+<p>Union FInd，在我个人的理解，就是点与点之间是否互相连通的问题。具体关于问题的描述，可以<a href="https://blog.csdn.net/guoziqing506/article/details/78752557">参考这里</a>，或者Algorithm 4th的P136-1.5.1</p>
+</blockquote>
+<h1 id="1quick-find实现的基本想法">（1）Quick Find实现的基本想法：</h1>
+<p>通过一个整数数组来保存图中所有的点及它们之间的关系，更具体来说，两个点P与Q是连通的，当且仅当索引P与索引Q在数组中所对应的项是相同的。这样说可能有点难以理解，下面看一个例子：<br>
+<img src="https://zy-zzf2000.github.io//post-images/1568043231866.png" alt=""><br>
+图中的数组保存了10个点的关系，可以看到，{0，5，6}，{1，2，7}，{8，3，4，9}分别是三个连通分支，所以id【0】=id【5】=id【6】=0...</p>
 <hr>
-<h1 id="1算法具体方法">（1）算法具体方法</h1>
-<ol>
-<li>将操作数压入操作数栈</li>
-<li>将运算符压入运算符栈</li>
-<li>忽略左括号</li>
-<li>如果遇到右括号，弹出一个运算符，弹出所需数量的操作数，并将运算符和操作数的运算结果压入操作数栈</li>
-<li>处理完算数表达式后，操作数栈最后只剩一个一个数字，该数字即为算数表达式的运算结果。</li>
-</ol>
-<hr>
-<h1 id="2简单证明">（2）简单证明</h1>
-<p>当遇到一个右括号时，算法弹出一个运算符和所需的操作数，并将结果压入操作数栈，这实际上相当于用该子表达式的结果代替了该表达式，如此循环往复，最后一个压入操作数栈的数字即为运算结果。</p>
-<hr>
-<h1 id="3实现代码">（3）实现代码</h1>
-<pre><code class="language-java">import java.util.Scanner;
-import java.util.Stack;
-
-public class Calc {
+<h1 id="2实现代码">（2）实现代码：</h1>
+<pre><code class="language-java">public class QuickFindUF {
+	private int[] id;
 	
-	public static double evaluate(String str) {
-		Stack&lt;Character&gt; ops=new Stack&lt;&gt;();
-		Stack&lt;Double&gt; vals=new Stack&lt;&gt;();
-		for(int i=0;i&lt;str.length();i++) {
-			char s= str.charAt(i);
-			if(s=='(')					;
-			else if(s=='+')	 ops.push(s)；        //读取运算符
-			else if(s=='-')		ops.push(s);
-			else if(s=='*')		ops.push(s);
-			else if(s=='/')		ops.push(s);
-			else if(s==')') {      //如果为')'，弹出运算符和操作数，并将计算结果压入栈中
-				char op=ops.pop();
-				double val=vals.pop();        
-				if(op=='+')		val+=vals.pop();
-				else if(op=='-')		val-=vals.pop();
-				else if(op=='*')		val*=vals.pop();
-				else if(op=='/')		val/=vals.pop();
-				vals.push(val);
-			}    //既不是运算符，也不是括号，那么就将其压入操作数栈中
-			else		vals.push(Double.parseDouble(String.valueOf(s)));
+	public QuickFindUF(int N) {//输入元素个数N，进行初始化
+		id=new int[N];
+		for(int i=0;i&lt;N;i++) {
+			id[i]=i;
 		}
-		return vals.pop();
+	}
+	
+	public boolean Isconnected(int p,int q) { //如果两个索引对应的值相等，则说明pq相连
+		return id[p]==id[q];
+	}
+	
+	public void union(int p,int q) {//实现将pq相连的方法，在这里，我们让数组中所有值等于id【p】的索引的值都改为id【q】，因为一个元素如果与连通分支中的一个元素相连，那么它与该连通分支的其他元素也相连
+		int pid=id[p];
+		int qid=id[q];
+		for(int i=0;i&lt;id.length;i++) {
+			if(id[i]==pid) {
+				id[i]=qid;
+			}
+		}
 	}
 	
 	public static void main(String[] args) {
-		Scanner in=new Scanner(System.in);
-		System.out.println(&quot;请输入算数表达式：&quot;);
-		String expr=in.next();
-		double res=evaluate(expr);
-		System.out.println(&quot;-------------------------------------&quot;);
-		System.out.println(expr+&quot;=&quot;+res);
-		in.close();
+		QuickFindUF demo=new QuickFindUF(10);
+		demo.union(0, 1);
+		demo.union(1, 2);
+		demo.union(2, 3);
+		demo.union(4, 5);
+		demo.union(5, 6);
+		demo.union(6, 7);
+		demo.union(7, 8);
+		System.out.println(&quot;0 and 3&quot;+demo.Isconnected(0, 3));
+		System.out.println(&quot;4 and 8&quot;+demo.Isconnected(4, 8));
+		System.out.println(&quot;0 and 9&quot;+demo.Isconnected(0, 9));
 	}
 }
 </code></pre>
+<hr>
+<h1 id="3quick-find实现的优缺点">(3)Quick Find实现的优缺点：</h1>
+<p>优点：查询两个点是否连接的效率非常高，仅需访问数组一次。<br>
+缺点：连接两个点是效率极低，需要历遍整个数组，算法效率为N乘以某个常数</p>
 
             </div>
             
@@ -172,9 +168,9 @@ public class Calc {
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zy-zzf2000.github.io//post/Somewords">
+                <a href="https://zy-zzf2000.github.io//post/Iterable">
                   <h3 class="post-title">
-                    想要对你说的一些话...
+                    Java语言中如何使一个类可迭代
                   </h3>
                 </a>
               </div>
