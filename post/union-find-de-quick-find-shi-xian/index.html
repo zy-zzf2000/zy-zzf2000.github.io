@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Union Find 的Quick Find实现 | 小张的网站</title>
+<title>Union Find 的Quick find实现 | 小张的网站</title>
 <meta name="description" content="莫道君行早，更有早行人">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://zy-zzf2000.github.io//favicon.ico?v=1568044292273">
+<link rel="shortcut icon" href="https://zy-zzf2000.github.io//favicon.ico?v=1568117681975">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://zy-zzf2000.github.io//styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://zy-zzf2000.github.io/">
-        <img src="https://zy-zzf2000.github.io//images/avatar.png?v=1568044292273" class="site-logo">
+        <img src="https://zy-zzf2000.github.io//images/avatar.png?v=1568117681975" class="site-logo">
         <h1 class="site-title">小张的网站</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -98,14 +98,14 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Union Find 的Quick Find实现</h2>
+            <h2 class="post-title">Union Find 的Quick find实现</h2>
             <div class="post-date">2019-09-09</div>
             
             <div class="post-content">
               <blockquote>
 <p>Union FInd，在我个人的理解，就是点与点之间是否互相连通的问题。具体关于问题的描述，可以<a href="https://blog.csdn.net/guoziqing506/article/details/78752557">参考这里</a>动态连通性的前三段，或者Algorithm 4th的P136-1.5.1</p>
 </blockquote>
-<h1 id="1quick-find实现的基本想法">（1）Quick Find实现的基本想法：</h1>
+<h1 id="1quick-find实现的基本想法">（1）Quick find实现的基本想法：</h1>
 <p>通过一个整数数组来保存图中所有的点及它们之间的关系，更具体来说，两个点P与Q是连通的，当且仅当索引P与索引Q在数组中所对应的项是相同的。这样说可能有点难以理解，下面看一个例子：<br>
 <img src="https://zy-zzf2000.github.io//post-images/1568043231866.png" alt=""><br>
 图中的数组保存了10个点的关系，可以看到，{0，5，6}，{1，2，7}，{8，3，4，9}分别是三个连通分支，所以id【0】=id【5】=id【6】=0...</p>

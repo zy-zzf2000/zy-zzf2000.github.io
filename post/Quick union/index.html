@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Union Find 的Quick union实现 | 小张的网站</title>
+<meta name="description" content="莫道君行早，更有早行人">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://zy-zzf2000.github.io//favicon.ico?v=1568117681975">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zy-zzf2000.github.io//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://zy-zzf2000.github.io/">
+        <img src="https://zy-zzf2000.github.io//images/avatar.png?v=1568117681975" class="site-logo">
+        <h1 class="site-title">小张的网站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://zy-zzf2000.github.io//post/Somewords/" class="site-nav">
+            想要对你说的一些话
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      莫道君行早，更有早行人
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zy-zzf2000.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Union Find 的Quick union实现</h2>
+            <div class="post-date">2019-09-10</div>
+            
+            <div class="post-content">
+              <blockquote>
+<p>继上次Quick find实现，为了解决每次连通两个结点都需要历遍整个数组的缺点，还有一种Quick union的实现。</p>
+</blockquote>
+<hr>
+<h1 id="1quick-union实现的基本想法">（1）Quick union实现的基本想法</h1>
+<p>与上次一样，Quick union算法所使用的基本数据结构还是整数数组，不同的是，这次需要两个整型数组，一个为id【N】，一个为size【N】。id【N】代表的是由结点组成的一片森林，其中，数组的元素主要用来存放索引的父节点，如果id【1】的值为0，则代表1结点的父节点是0结点，size【N】主要用来存放以索引为根结点的树的大小。如size【0】的值为5，则代表以0为根结点的树大小为5（即这颗树即一共有5个结点）。<br>
+<img src="https://zy-zzf2000.github.io//post-images/1568115818472.png" alt=""></p>
+<ul>
+<li>Find方法：分别沿着id数组寻找根节点，查询两个根节点是否相同</li>
+<li>union方法：分别沿着id数组寻找根节点，将其中一个根节点改为另一个根节点的子节点。<br>
+不难发现，无论是find方法还是union方法，都需要寻找根节点，因此树的大小是影响该算法性能的一个重要因素，因此后面将对此进行优化。</li>
+</ul>
+<hr>
+<h1 id="2实现代码">(2)实现代码</h1>
+<pre><code class="language-java">public class QuickunionUF {
+	private int[] id;	 //用来保存相应索引的父节点
+	private int[] size;  //用来保存对应以相应索引为根节点的树的大小
+	
+	public QuickunionUF(int N) { //对各个结点进行初始化
+		id=new int[N];
+		for(int i=0;i&lt;N;i++) {
+			id[i] =i;
+		}
+		size=new int[N];
+		for(int i=0;i&lt;N;i++) {
+			size[i]=1;
+		}
+	}
+	
+	public int root(int p) { //寻找根节点
+		while(id[p]!=p) {
+			id[p]=id[id[p]]; //这一行是为了减少树的高度，即让每个结点指向其祖父结点
+			p=id[p];
+		}
+		return p;
+	}
+	
+	public boolean Isconnect(int p,int q) {
+		return root(p)==root(q);
+	}
+	
+	public void union(int p,int q) { //使两个结点连通
+		int rootp=root(p);
+		int rootq=root(q);
+		if(size[rootp]&lt;size[rootq]) { //根据p,q所在树的大小，尽量减小树的高度
+			id[rootp]=rootq;
+			size[rootq]=size[rootq]+size[rootp];
+		}
+		else {
+			id[rootq]=rootp;
+			size[rootp]+=size[rootq];
+		}		
+	}
+	
+	public static void main(String[] args) {
+		QuickunionUF test=new QuickunionUF(10);
+		test.union(1, 2);
+		test.union(1, 7);
+		test.union(3, 4);
+		test.union(4, 5);
+		test.union(0, 6);
+		test.union(0, 8);
+		test.union(6, 9);
+		System.out.println(&quot;2 and 7&quot;+test.Isconnect(2, 7));
+		System.out.println(&quot;3 and 5&quot;+test.Isconnect(3, 5));
+		System.out.println(&quot;0 and 9&quot;+test.Isconnect(0, 9));
+		System.out.println(&quot;0 and 7&quot;+test.Isconnect(0, 7));
+	}
+}
+</code></pre>
+<p>在上面的代码中，主要由两处进行了优化，第一处是root方法中，</p>
+<pre><code class="language-java">id[p]=id[id[p]];
+</code></pre>
+<p>这一行的代码是让结点从指向父节点该为指向祖父结点，这样就有效减少了树的高度。事实上，我们可以将所有结点都改为指向根结点（也被成为树的完全展平），进一步减小树的高度，但在实际使用中，完全展平与上述代码效率相差无几，由于上述方法只需要一行代码即可实现，我们采用上述代码。</p>
+<p>第二处优化是union方法中，</p>
+<pre><code class="language-java">if(size[rootp]&lt;size[rootq]) { //根据p,q所在树的大小，尽量减小树的高度
+			id[rootp]=rootq;
+			size[rootq]=size[rootq]+size[rootp];
+		}
+		else {
+			id[rootq]=rootp;
+			size[rootp]+=size[rootq];
+		}
+</code></pre>
+<p>在union方法中，我们根据树的大小进行不同的操作。可以发现，我们总是让大树<br>
+的根节点成为小树根节点的父节点。这样做同样是为了减少树的高度。</p>
+<hr>
+<h1 id="3quick-union的优缺点">（3）Quick union的优缺点</h1>
+<p>优点：Quick union的union的时间复杂度为O（lgN~N），假设由一颗共N个结点的树，若该树为满二叉树，那么最高层的树叶必须经过lgN次，才能找到根节点；如果该树为斜树，那么最高层的树叶必须经过N次，才能找到根节点。<br>
+（由于对root函数进行了优化，事实上，Quick union的find函数的时间复杂度也相当低，因此这个算法基本上算是某种程度的“最佳算法”）。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://zy-zzf2000.github.io//tag/jmC06bpXo" class="tag">
+                    算法
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zy-zzf2000.github.io//post/union-find-de-quick-find-shi-xian">
+                  <h3 class="post-title">
+                    Union Find 的Quick find实现
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

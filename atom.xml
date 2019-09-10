@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-09-09T15:51:33.955Z</updated>
+    <updated>2019-09-10T12:14:56.271Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
@@ -11,7 +11,105 @@
     <icon>https://zy-zzf2000.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小张的网站</rights>
     <entry>
-        <title type="html"><![CDATA[Union Find 的Quick Find实现]]></title>
+        <title type="html"><![CDATA[Union Find 的Quick union实现]]></title>
+        <id>https://zy-zzf2000.github.io//post/Quick union</id>
+        <link href="https://zy-zzf2000.github.io//post/Quick union">
+        </link>
+        <updated>2019-09-10T11:25:49.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>继上次Quick find实现，为了解决每次连通两个结点都需要历遍整个数组的缺点，还有一种Quick union的实现。</p>
+</blockquote>
+<hr>
+<h1 id="1quick-union实现的基本想法">（1）Quick union实现的基本想法</h1>
+<p>与上次一样，Quick union算法所使用的基本数据结构还是整数数组，不同的是，这次需要两个整型数组，一个为id【N】，一个为size【N】。id【N】代表的是由结点组成的一片森林，其中，数组的元素主要用来存放索引的父节点，如果id【1】的值为0，则代表1结点的父节点是0结点，size【N】主要用来存放以索引为根结点的树的大小。如size【0】的值为5，则代表以0为根结点的树大小为5（即这颗树即一共有5个结点）。<br>
+<img src="https://zy-zzf2000.github.io//post-images/1568115818472.png" alt=""></p>
+<ul>
+<li>Find方法：分别沿着id数组寻找根节点，查询两个根节点是否相同</li>
+<li>union方法：分别沿着id数组寻找根节点，将其中一个根节点改为另一个根节点的子节点。<br>
+不难发现，无论是find方法还是union方法，都需要寻找根节点，因此树的大小是影响该算法性能的一个重要因素，因此后面将对此进行优化。</li>
+</ul>
+<hr>
+<h1 id="2实现代码">(2)实现代码</h1>
+<pre><code class="language-java">public class QuickunionUF {
+	private int[] id;	 //用来保存相应索引的父节点
+	private int[] size;  //用来保存对应以相应索引为根节点的树的大小
+	
+	public QuickunionUF(int N) { //对各个结点进行初始化
+		id=new int[N];
+		for(int i=0;i&lt;N;i++) {
+			id[i] =i;
+		}
+		size=new int[N];
+		for(int i=0;i&lt;N;i++) {
+			size[i]=1;
+		}
+	}
+	
+	public int root(int p) { //寻找根节点
+		while(id[p]!=p) {
+			id[p]=id[id[p]]; //这一行是为了减少树的高度，即让每个结点指向其祖父结点
+			p=id[p];
+		}
+		return p;
+	}
+	
+	public boolean Isconnect(int p,int q) {
+		return root(p)==root(q);
+	}
+	
+	public void union(int p,int q) { //使两个结点连通
+		int rootp=root(p);
+		int rootq=root(q);
+		if(size[rootp]&lt;size[rootq]) { //根据p,q所在树的大小，尽量减小树的高度
+			id[rootp]=rootq;
+			size[rootq]=size[rootq]+size[rootp];
+		}
+		else {
+			id[rootq]=rootp;
+			size[rootp]+=size[rootq];
+		}		
+	}
+	
+	public static void main(String[] args) {
+		QuickunionUF test=new QuickunionUF(10);
+		test.union(1, 2);
+		test.union(1, 7);
+		test.union(3, 4);
+		test.union(4, 5);
+		test.union(0, 6);
+		test.union(0, 8);
+		test.union(6, 9);
+		System.out.println(&quot;2 and 7&quot;+test.Isconnect(2, 7));
+		System.out.println(&quot;3 and 5&quot;+test.Isconnect(3, 5));
+		System.out.println(&quot;0 and 9&quot;+test.Isconnect(0, 9));
+		System.out.println(&quot;0 and 7&quot;+test.Isconnect(0, 7));
+	}
+}
+</code></pre>
+<p>在上面的代码中，主要由两处进行了优化，第一处是root方法中，</p>
+<pre><code class="language-java">id[p]=id[id[p]];
+</code></pre>
+<p>这一行的代码是让结点从指向父节点该为指向祖父结点，这样就有效减少了树的高度。事实上，我们可以将所有结点都改为指向根结点（也被成为树的完全展平），进一步减小树的高度，但在实际使用中，完全展平与上述代码效率相差无几，由于上述方法只需要一行代码即可实现，我们采用上述代码。</p>
+<p>第二处优化是union方法中，</p>
+<pre><code class="language-java">if(size[rootp]&lt;size[rootq]) { //根据p,q所在树的大小，尽量减小树的高度
+			id[rootp]=rootq;
+			size[rootq]=size[rootq]+size[rootp];
+		}
+		else {
+			id[rootq]=rootp;
+			size[rootp]+=size[rootq];
+		}
+</code></pre>
+<p>在union方法中，我们根据树的大小进行不同的操作。可以发现，我们总是让大树<br>
+的根节点成为小树根节点的父节点。这样做同样是为了减少树的高度。</p>
+<hr>
+<h1 id="3quick-union的优缺点">（3）Quick union的优缺点</h1>
+<p>优点：Quick union的union的时间复杂度为O（lgN~N），假设由一颗共N个结点的树，若该树为满二叉树，那么最高层的树叶必须经过lgN次，才能找到根节点；如果该树为斜树，那么最高层的树叶必须经过N次，才能找到根节点。<br>
+（由于对root函数进行了优化，事实上，Quick union的find函数的时间复杂度也相当低，因此这个算法基本上算是某种程度的“最佳算法”）。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Union Find 的Quick find实现]]></title>
         <id>https://zy-zzf2000.github.io//post/union-find-de-quick-find-shi-xian</id>
         <link href="https://zy-zzf2000.github.io//post/union-find-de-quick-find-shi-xian">
         </link>
@@ -19,7 +117,7 @@
         <content type="html"><![CDATA[<blockquote>
 <p>Union FInd，在我个人的理解，就是点与点之间是否互相连通的问题。具体关于问题的描述，可以<a href="https://blog.csdn.net/guoziqing506/article/details/78752557">参考这里</a>动态连通性的前三段，或者Algorithm 4th的P136-1.5.1</p>
 </blockquote>
-<h1 id="1quick-find实现的基本想法">（1）Quick Find实现的基本想法：</h1>
+<h1 id="1quick-find实现的基本想法">（1）Quick find实现的基本想法：</h1>
 <p>通过一个整数数组来保存图中所有的点及它们之间的关系，更具体来说，两个点P与Q是连通的，当且仅当索引P与索引Q在数组中所对应的项是相同的。这样说可能有点难以理解，下面看一个例子：<br>
 <img src="https://zy-zzf2000.github.io//post-images/1568043231866.png" alt=""><br>
 图中的数组保存了10个点的关系，可以看到，{0，5，6}，{1，2，7}，{8，3，4，9}分别是三个连通分支，所以id【0】=id【5】=id【6】=0...</p>
