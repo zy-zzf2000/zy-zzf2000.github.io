@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-09-10T14:39:14.698Z</updated>
+    <updated>2019-09-14T07:19:50.382Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
@@ -10,6 +10,40 @@
     <logo>https://zy-zzf2000.github.io//images/avatar.png</logo>
     <icon>https://zy-zzf2000.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小张的网站</rights>
+    <entry>
+        <title type="html"><![CDATA[山民]]></title>
+        <id>https://zy-zzf2000.github.io//post/Shanmin</id>
+        <link href="https://zy-zzf2000.github.io//post/Shanmin">
+        </link>
+        <updated>2019-09-14T07:01:21.000Z</updated>
+        <content type="html"><![CDATA[<hr>
+<p>小时候，他问父亲</p>
+<p>“山那边是什么？”<br>
+父亲说：“是山”<br>
+“那边的那边呢？”<br>
+“山，还是山”<br>
+他不作声了，看着远处<br>
+山第一次使他这样疲倦</p>
+<p>他想，这辈子是走不出这里的群山了<br>
+海是有的，但十分遥远<br>
+他只能活几十年<br>
+所以没有等他走到那里<br>
+就已死在半路上了<br>
+死在山中</p>
+<p>他觉得应该带着老婆一起上路<br>
+老婆会给他生个儿子<br>
+到他死的时候<br>
+儿子就长大了<br>
+儿子也会有老婆<br>
+儿子也会有儿子<br>
+儿子的儿子也还会有儿子<br>
+他不再想了<br>
+儿子也使他很疲倦</p>
+<p>他只是遗憾<br>
+他的祖先没有像他一样想过<br>
+不然，见到大海的该是他了</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Union Find 的Quick union实现]]></title>
         <id>https://zy-zzf2000.github.io//post/Quick union</id>
@@ -102,10 +136,15 @@
 </code></pre>
 <p>在union方法中，我们根据树的大小进行不同的操作。可以发现，我们总是让大树<br>
 的根节点成为小树根节点的父节点。这样做同样是为了减少树的高度。</p>
+<p>事实上，我们可以证明，在不考虑优化一（仅有优化二）的前提下，若共有k个结点，则树的高度至多为lgk。下面是一个证明：</p>
+<ol>
+<li>初始条件下，当k=1时，树高为0.</li>
+<li>若k！=1，假设当前需要归并的树大小为i时，性质成立，即树高为lgi。因为只有与大小不小于自己的树归并，树高才会发生变化，因此我们设i&lt;=j且i+j=k（最坏情况）。这时，树高为lgi+1=lg（i+i）&lt;=lg（i+k）=lgk，注意，lg以2为底。</li>
+</ol>
 <hr>
 <h1 id="3quick-union的优缺点">（3）Quick union的优缺点</h1>
-<p>优点：Quick union的union的时间复杂度为O（lgN~N），假设由一颗共N个结点的树，若该树为满二叉树，那么最高层的树叶必须经过lgN次，才能找到根节点；如果该树为斜树，那么最高层的树叶必须经过N次，才能找到根节点。<br>
-（由于对root函数进行了优化，事实上，Quick union的find函数的时间复杂度也相当低，因此这个算法基本上算是某种程度的“最佳算法”）。</p>
+<p>优点：仅仅只有优化二的Quick union的union方法与find方法的的时间复杂度均为O（lgN），而加上优化一之后，find方法与union方法的时间复杂度非常接近于O（1）。<br>
+缺点：暂无。</p>
 ]]></content>
     </entry>
     <entry>

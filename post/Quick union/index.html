@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://zy-zzf2000.github.io//favicon.ico?v=1568121913775">
+<link rel="shortcut icon" href="https://zy-zzf2000.github.io//favicon.ico?v=1568445574201">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://zy-zzf2000.github.io//styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://zy-zzf2000.github.io/">
-        <img src="https://zy-zzf2000.github.io//images/avatar.png?v=1568121913775" class="site-logo">
+        <img src="https://zy-zzf2000.github.io//images/avatar.png?v=1568445574201" class="site-logo">
         <h1 class="site-title">小张的网站</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -188,10 +188,15 @@
 </code></pre>
 <p>在union方法中，我们根据树的大小进行不同的操作。可以发现，我们总是让大树<br>
 的根节点成为小树根节点的父节点。这样做同样是为了减少树的高度。</p>
+<p>事实上，我们可以证明，在不考虑优化一（仅有优化二）的前提下，若共有k个结点，则树的高度至多为lgk。下面是一个证明：</p>
+<ol>
+<li>初始条件下，当k=1时，树高为0.</li>
+<li>若k！=1，假设当前需要归并的树大小为i时，性质成立，即树高为lgi。因为只有与大小不小于自己的树归并，树高才会发生变化，因此我们设i&lt;=j且i+j=k（最坏情况）。这时，树高为lgi+1=lg（i+i）&lt;=lg（i+k）=lgk，注意，lg以2为底。</li>
+</ol>
 <hr>
 <h1 id="3quick-union的优缺点">（3）Quick union的优缺点</h1>
-<p>优点：Quick union的union的时间复杂度为O（lgN~N），假设由一颗共N个结点的树，若该树为满二叉树，那么最高层的树叶必须经过lgN次，才能找到根节点；如果该树为斜树，那么最高层的树叶必须经过N次，才能找到根节点。<br>
-（由于对root函数进行了优化，事实上，Quick union的find函数的时间复杂度也相当低，因此这个算法基本上算是某种程度的“最佳算法”）。</p>
+<p>优点：仅仅只有优化二的Quick union的union方法与find方法的的时间复杂度均为O（lgN），而加上优化一之后，find方法与union方法的时间复杂度非常接近于O（1）。<br>
+缺点：暂无。</p>
 
             </div>
             
