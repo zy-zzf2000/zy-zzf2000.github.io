@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-09-14T07:23:36.373Z</updated>
+    <updated>2019-09-20T10:52:01.219Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
@@ -10,6 +10,15 @@
     <logo>https://zy-zzf2000.github.io//images/avatar.png</logo>
     <icon>https://zy-zzf2000.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小张的网站</rights>
+    <entry>
+        <title type="html"><![CDATA[小波]]></title>
+        <id>https://zy-zzf2000.github.io//post/0305</id>
+        <link href="https://zy-zzf2000.github.io//post/0305">
+        </link>
+        <updated>2019-09-20T10:48:18.000Z</updated>
+        <content type="html"><![CDATA[<p>后来我才知道，生活就是个缓慢受槌的过程，人一天天老下去，奢望也一天天消失，最后变得像挨了槌的牛一样。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[山民]]></title>
         <id>https://zy-zzf2000.github.io//post/Shanmin</id>
