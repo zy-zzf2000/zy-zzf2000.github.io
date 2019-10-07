@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-09-22T13:16:59.716Z</updated>
+    <updated>2019-10-07T15:01:25.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
@@ -10,6 +10,102 @@
     <logo>https://zy-zzf2000.github.io//images/avatar.png</logo>
     <icon>https://zy-zzf2000.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小张的网站</rights>
+    <entry>
+        <title type="html"><![CDATA[cin和cout运行超时的问题]]></title>
+        <id>https://zy-zzf2000.github.io//post/ioc</id>
+        <link href="https://zy-zzf2000.github.io//post/ioc">
+        </link>
+        <updated>2019-10-07T15:00:06.000Z</updated>
+        <content type="html"><![CDATA[<p>在代码中加入：</p>
+<pre><code>std::ios::sync_with_stdio(false);
+</code></pre>
+<p>可以使cin与cout的运行效率几乎与scanf和printf一样。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[c++ sort函数的基本应用]]></title>
+        <id>https://zy-zzf2000.github.io//post/sort</id>
+        <link href="https://zy-zzf2000.github.io//post/sort">
+        </link>
+        <updated>2019-10-07T14:02:18.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="1-sort函数的基本格式">1、sort函数的基本格式：</h1>
+<p>sort（首元素地址，尾元素地址的下一个地址，cmp（非必填））</p>
+<hr>
+<h1 id="2-cmp函数">2、cmp函数</h1>
+<p>cmp函数是一个自定义的比较函数，它返回一个bool值，用于返回两个类在sort函数中的大小关系。如：</p>
+<pre><code class="language-c++">bool cmp(student a,student b){
+	if(a.score!=b.score){
+		return a.score&gt;b.score;
+	}
+	else{
+		return a.id&lt;b.id;
+	}
+}
+</code></pre>
+<p>这段代码表示当学生成绩不一致时，按成绩从大到小排序，否则，按学号从小到大排序。</p>
+<hr>
+<h1 id="3-当排序有并列时应该怎么样做">3、当排序有并列时，应该怎么样做。</h1>
+<p>让排序后的第一个元素排名为1，定义一个int 型变量r=1，遍历所有元素，当当前元素分数等于上一个元素时，当前元素排名也等于上一个元素，否则令元素排名为r。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[双指针法]]></title>
+        <id>https://zy-zzf2000.github.io//post/doubleptr</id>
+        <link href="https://zy-zzf2000.github.io//post/doubleptr">
+        </link>
+        <updated>2019-10-01T11:04:12.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>通过两道例题来体会双指针法的使用。</p>
+</blockquote>
+<hr>
+<h1 id="1">1、</h1>
+<blockquote>
+<p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+</blockquote>
+<p>数组完成排序后，我们可以放置两个指针 i 和 j，其中i是慢指针，而j是快指针。只要 nums[i]=nums[j]nums[i] = nums[j]nums[i]=nums[j]，我们就增加j以跳过重复项。<br>
+当我们遇到 nums[j]≠nums[i]nums[j]时，跳过重复项的运行已经结束，因此我们必须把它（nums[j]）的值复制到 nums[i+1]上。然后递增i，接着我们将再次重复相同的过程，直到j到达数组的末尾为止。</p>
+<pre><code class="language-java">public int removeDuplicates(int[] nums) {
+    if (nums.length == 0) return 0;
+    int i = 0;
+    for (int j = 1; j &lt; nums.length; j++) {
+        if (nums[j] != nums[i]) {
+            i++;
+            nums[i] = nums[j];
+        }
+    }
+    return i + 1;
+}
+</code></pre>
+<hr>
+<h1 id="2">2、</h1>
+<blockquote>
+<p>给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。<br>
+不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。<br>
+元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
+</blockquote>
+<p>同上，我们可以保留两个指针i和j，其中i时慢指针，j是快指针。当 nums[j] 与给定的值相等时，递增j以跳过该元素。只要 nums[j]≠val，我们就复制 nums[j] 到 nums[i] 并同时递增两个索引。重复这一过程，直到j到达数组的末尾，该数组的新长度为i。</p>
+<pre><code class="language-java">public int removeElement(int[] nums, int val) {
+    int i = 0;
+    for (int j = 0; j &lt; nums.length; j++) {
+        if (nums[j] != val) {
+            nums[i] = nums[j];
+            i++;
+        }
+    }
+    return i;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[初级排序算法——希尔排序]]></title>
+        <id>https://zy-zzf2000.github.io//post/chu-ji-pai-xu-suan-fa-xi-er-pai-xu</id>
+        <link href="https://zy-zzf2000.github.io//post/chu-ji-pai-xu-suan-fa-xi-er-pai-xu">
+        </link>
+        <updated>2019-09-24T07:47:20.000Z</updated>
+        <content type="html"><![CDATA[<p>1</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[小波]]></title>
         <id>https://zy-zzf2000.github.io//post/0305</id>
@@ -331,171 +427,6 @@ public class Myqueue&lt;Item&gt; {
 <h1 id="3quick-find实现的优缺点">(3)Quick Find实现的优缺点：</h1>
 <p>优点：查询两个点是否连接的效率非常高，仅需访问数组一次。<br>
 缺点：连接两个点是效率极低，需要历遍整个数组，算法效率为N乘以某个常数</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Java语言中如何使一个类可迭代]]></title>
-        <id>https://zy-zzf2000.github.io//post/Iterable</id>
-        <link href="https://zy-zzf2000.github.io//post/Iterable">
-        </link>
-        <updated>2019-09-08T02:14:17.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="1在该类的声明中加入implements-iterable-item-实现iterable接口">（1）在该类的声明中加入implements Iterable&lt; Item &gt;(实现Iterable接口）</h1>
-<p>其中，对应的接口（java.lang.Iterable)为：</p>
-<pre><code class="language-java">public interface Iterable&lt;Item&gt;{
-	Iterator&lt;Item&gt; iterator();
-}
-</code></pre>
-<hr>
-<h1 id="2在该类内定义一个嵌套类嵌套类需实现iterator接口">(2)在该类内定义一个嵌套类，嵌套类需实现Iterator接口。</h1>
-<p>其中，对应的接口（java.util.Itearot)为：</p>
-<pre><code class="language-java">public interface Iterator&lt;Item&gt;{
-boolean hasNext();
-Item next();
-void remove();
-}
-</code></pre>
-<hr>
-<h1 id="3一个实现了可迭代的下压栈">(3)一个实现了可迭代的下压栈</h1>
-<p>在这个例子中：</p>
-<ul>
-<li>栈顶的元素总是保存在a [ N-1 ]中（除非栈为空）</li>
-<li>事实上，用链表实现栈更为简单，性能应该也更好</li>
-</ul>
-<pre><code class="language-java">import java.util.Iterator;
-
-public class ResizingArrayStack&lt;Item&gt; implements Iterable&lt;Item&gt;{
-	private Item[] a=(Item[]) new Object[1];  //a用于保存压入栈中的元素，初始大小为1
-	private int N=0;//栈中元素数量
-	
-	public boolean isEmpty() {
-		return N==0;
-	}
-	
-	public int size() {
-		return N;
-	}
-	
-	private void resize(int num) {//将栈移动到一个大小为num的数组
-		Item[] temp=(Item[]) new Object[num];//java语言不支持创建泛型数组，因此只能使用强制类型转换	
-		for(int i=0;i&lt;N;i++) {
-			temp[i]=a[i];
-		}
-		a=temp;
-	}
-	
-	public void push(Item item) {//将元素压入栈中
-		if(N==a.length) {
-			resize(2*a.length);
-		}
-		a[N++]=item;
-	}
-	
-	public Item pop() {//从栈顶弹出元素
-		Item item=a[--N];
-		a[N]=null;//覆盖a[N]的引用，让java垃圾收集器回收弹出元素所占的空间
-		if(N&gt;0&amp;&amp;N==a.length/4) {//避免开辟的数组空间过大而造成浪费
-			resize(a.length/2);
-		}
-		return item;
-	}
-	
-	public Iterator&lt;Item&gt; iterator(){
-		return new ReverseArrayIterator();
-	}
-	
-	//这是一个逆向迭代数组的迭代子，因为栈总是后进先出
-	private class ReverseArrayIterator implements Iterator&lt;Item&gt;{
-		private int i=N;//在实现Iterator接口时，总需要先定义一个实例变量，用来记录当前结点，一把会把它初始化为需要开始迭代的地方
-		
-		public boolean hasNext() {
-			return i&gt;0;
-		}
-		
-		public Item next() {
-			return a[--i];
-		}
-		
-		public void remove() {
-			//书上的说法是remove方法总为空，避免迭代时修改数据结构的操作，好吧...
-		}	
-	}	
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[栈的简单应用——双栈法实现算数表达式求值]]></title>
-        <id>https://zy-zzf2000.github.io//post/SimpleStack</id>
-        <link href="https://zy-zzf2000.github.io//post/SimpleStack">
-        </link>
-        <updated>2019-09-04T10:55:01.000Z</updated>
-        <summary type="html"><![CDATA[<p>通过简单的机制处理由（）、+、-、* 所组成表达式的优先级运算</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>通过简单的机制处理由（）、+、-、* 所组成表达式的优先级运算</p>
- <!-- more --> 
-<hr>
-<h1 id="1算法具体方法">（1）算法具体方法</h1>
-<ol>
-<li>将操作数压入操作数栈</li>
-<li>将运算符压入运算符栈</li>
-<li>忽略左括号</li>
-<li>如果遇到右括号，弹出一个运算符，弹出所需数量的操作数，并将运算符和操作数的运算结果压入操作数栈</li>
-<li>处理完算数表达式后，操作数栈最后只剩一个一个数字，该数字即为算数表达式的运算结果。</li>
-</ol>
-<hr>
-<h1 id="2简单证明">（2）简单证明</h1>
-<p>当遇到一个右括号时，算法弹出一个运算符和所需的操作数，并将结果压入操作数栈，这实际上相当于用该子表达式的结果代替了该表达式，如此循环往复，最后一个压入操作数栈的数字即为运算结果。</p>
-<hr>
-<h1 id="3实现代码">（3）实现代码</h1>
-<pre><code class="language-java">import java.util.Scanner;
-import java.util.Stack;
-
-public class Calc {
-	
-	public static double evaluate(String str) {
-		Stack&lt;Character&gt; ops=new Stack&lt;&gt;();
-		Stack&lt;Double&gt; vals=new Stack&lt;&gt;();
-		for(int i=0;i&lt;str.length();i++) {
-			char s= str.charAt(i);
-			if(s=='(')					;
-			else if(s=='+')	 ops.push(s)；        //读取运算符
-			else if(s=='-')		ops.push(s);
-			else if(s=='*')		ops.push(s);
-			else if(s=='/')		ops.push(s);
-			else if(s==')') {      //如果为')'，弹出运算符和操作数，并将计算结果压入栈中
-				char op=ops.pop();
-				double val=vals.pop();        
-				if(op=='+')		val+=vals.pop();
-				else if(op=='-')		val-=vals.pop();
-				else if(op=='*')		val*=vals.pop();
-				else if(op=='/')		val/=vals.pop();
-				vals.push(val);
-			}    //既不是运算符，也不是括号，那么就将其压入操作数栈中
-			else		vals.push(Double.parseDouble(String.valueOf(s)));
-		}
-		return vals.pop();
-	}
-	
-	public static void main(String[] args) {
-		Scanner in=new Scanner(System.in);
-		System.out.println(&quot;请输入算数表达式：&quot;);
-		String expr=in.next();
-		double res=evaluate(expr);
-		System.out.println(&quot;-------------------------------------&quot;);
-		System.out.println(expr+&quot;=&quot;+res);
-		in.close();
-	}
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[关于]]></title>
-        <id>https://zy-zzf2000.github.io//post/about</id>
-        <link href="https://zy-zzf2000.github.io//post/about">
-        </link>
-        <updated>2019-08-31T11:09:48.000Z</updated>
-        <content type="html"><![CDATA[<p>这个博客主要用来记录学习<em>Algorithm 4th</em>及<em>java web</em>的学习过程，有时也会用于分享一些生活的感受。</p>
 ]]></content>
     </entry>
 </feed>
