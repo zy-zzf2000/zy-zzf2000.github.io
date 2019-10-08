@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>小张的网站</title>
+<title>栈的简单应用——双栈法实现算数表达式求值 | 小张的网站</title>
 <meta name="description" content="莫道君行早，更有早行人">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -97,75 +97,92 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zy-zzf2000.github.io//post/union-find-de-quick-find-shi-xian">
-                  <h2 class="post-title">Union Find 的Quick find实现</h2>
-                </a>
-                <div class="post-date">
-                  2019-09-09
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zy-zzf2000.github.io//post/Iterable">
-                  <h2 class="post-title">Java语言中如何使一个类可迭代</h2>
-                </a>
-                <div class="post-date">
-                  2019-09-08
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zy-zzf2000.github.io//post/SimpleStack">
-                  <h2 class="post-title">栈的简单应用——双栈法实现算数表达式求值</h2>
-                </a>
-                <div class="post-date">
-                  2019-09-04
-                </div>
-                <div class="post-abstract">
-                  <p>通过简单的机制处理由（）、+、-、* 所组成表达式的优先级运算</p>
+          <div class="post-detail">
+            <h2 class="post-title">栈的简单应用——双栈法实现算数表达式求值</h2>
+            <div class="post-date">2019-09-04</div>
+            
+            <div class="post-content">
+              <p>通过简单的机制处理由（）、+、-、* 所组成表达式的优先级运算</p>
+ <!-- more --> 
+<hr>
+<h1 id="1算法具体方法">（1）算法具体方法</h1>
+<ol>
+<li>将操作数压入操作数栈</li>
+<li>将运算符压入运算符栈</li>
+<li>忽略左括号</li>
+<li>如果遇到右括号，弹出一个运算符，弹出所需数量的操作数，并将运算符和操作数的运算结果压入操作数栈</li>
+<li>处理完算数表达式后，操作数栈最后只剩一个一个数字，该数字即为算数表达式的运算结果。</li>
+</ol>
+<hr>
+<h1 id="2简单证明">（2）简单证明</h1>
+<p>当遇到一个右括号时，算法弹出一个运算符和所需的操作数，并将结果压入操作数栈，这实际上相当于用该子表达式的结果代替了该表达式，如此循环往复，最后一个压入操作数栈的数字即为运算结果。</p>
+<hr>
+<h1 id="3实现代码">（3）实现代码</h1>
+<pre><code class="language-java">import java.util.Scanner;
+import java.util.Stack;
 
-                </div>
+public class Calc {
+	
+	public static double evaluate(String str) {
+		Stack&lt;Character&gt; ops=new Stack&lt;&gt;();
+		Stack&lt;Double&gt; vals=new Stack&lt;&gt;();
+		for(int i=0;i&lt;str.length();i++) {
+			char s= str.charAt(i);
+			if(s=='(')					;
+			else if(s=='+')	 ops.push(s)；        //读取运算符
+			else if(s=='-')		ops.push(s);
+			else if(s=='*')		ops.push(s);
+			else if(s=='/')		ops.push(s);
+			else if(s==')') {      //如果为')'，弹出运算符和操作数，并将计算结果压入栈中
+				char op=ops.pop();
+				double val=vals.pop();        
+				if(op=='+')		val+=vals.pop();
+				else if(op=='-')		val-=vals.pop();
+				else if(op=='*')		val*=vals.pop();
+				else if(op=='/')		val/=vals.pop();
+				vals.push(val);
+			}    //既不是运算符，也不是括号，那么就将其压入操作数栈中
+			else		vals.push(Double.parseDouble(String.valueOf(s)));
+		}
+		return vals.pop();
+	}
+	
+	public static void main(String[] args) {
+		Scanner in=new Scanner(System.in);
+		System.out.println(&quot;请输入算数表达式：&quot;);
+		String expr=in.next();
+		double res=evaluate(expr);
+		System.out.println(&quot;-------------------------------------&quot;);
+		System.out.println(expr+&quot;=&quot;+res);
+		in.close();
+	}
+}
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://zy-zzf2000.github.io//tag/jmC06bpXo" class="tag">
+                    算法
+                  </a>
+                
               </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
                 <a href="https://zy-zzf2000.github.io//post/about">
-                  <h2 class="post-title">关于</h2>
+                  <h3 class="post-title">
+                    关于
+                  </h3>
                 </a>
-                <div class="post-date">
-                  2019-08-31
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
               </div>
-              
-            </article>
-          
+            
 
-          <div class="pagination-container">
-  
-    <a href="https://zy-zzf2000.github.io//" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
-  
-  
-</div>
+            
+
+          </div>
 
         </div>
       </div>

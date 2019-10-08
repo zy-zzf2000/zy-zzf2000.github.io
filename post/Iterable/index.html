@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Java语言中如何使一个类可迭代 | 小张的网站</title>
+<meta name="description" content="莫道君行早，更有早行人">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://zy-zzf2000.github.io//favicon.ico?v=1570547988602">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zy-zzf2000.github.io//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://zy-zzf2000.github.io/">
+        <img src="https://zy-zzf2000.github.io//images/avatar.png?v=1570547988602" class="site-logo">
+        <h1 class="site-title">小张的网站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://zy-zzf2000.github.io//post/Somewords/" class="site-nav">
+            想要对你说的一些话
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      莫道君行早，更有早行人
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zy-zzf2000.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Java语言中如何使一个类可迭代</h2>
+            <div class="post-date">2019-09-08</div>
+            
+            <div class="post-content">
+              <h1 id="1在该类的声明中加入implements-iterable-item-实现iterable接口">（1）在该类的声明中加入implements Iterable&lt; Item &gt;(实现Iterable接口）</h1>
+<p>其中，对应的接口（java.lang.Iterable)为：</p>
+<pre><code class="language-java">public interface Iterable&lt;Item&gt;{
+	Iterator&lt;Item&gt; iterator();
+}
+</code></pre>
+<hr>
+<h1 id="2在该类内定义一个嵌套类嵌套类需实现iterator接口">(2)在该类内定义一个嵌套类，嵌套类需实现Iterator接口。</h1>
+<p>其中，对应的接口（java.util.Itearot)为：</p>
+<pre><code class="language-java">public interface Iterator&lt;Item&gt;{
+boolean hasNext();
+Item next();
+void remove();
+}
+</code></pre>
+<hr>
+<h1 id="3一个实现了可迭代的下压栈">(3)一个实现了可迭代的下压栈</h1>
+<p>在这个例子中：</p>
+<ul>
+<li>栈顶的元素总是保存在a [ N-1 ]中（除非栈为空）</li>
+<li>事实上，用链表实现栈更为简单，性能应该也更好</li>
+</ul>
+<pre><code class="language-java">import java.util.Iterator;
+
+public class ResizingArrayStack&lt;Item&gt; implements Iterable&lt;Item&gt;{
+	private Item[] a=(Item[]) new Object[1];  //a用于保存压入栈中的元素，初始大小为1
+	private int N=0;//栈中元素数量
+	
+	public boolean isEmpty() {
+		return N==0;
+	}
+	
+	public int size() {
+		return N;
+	}
+	
+	private void resize(int num) {//将栈移动到一个大小为num的数组
+		Item[] temp=(Item[]) new Object[num];//java语言不支持创建泛型数组，因此只能使用强制类型转换	
+		for(int i=0;i&lt;N;i++) {
+			temp[i]=a[i];
+		}
+		a=temp;
+	}
+	
+	public void push(Item item) {//将元素压入栈中
+		if(N==a.length) {
+			resize(2*a.length);
+		}
+		a[N++]=item;
+	}
+	
+	public Item pop() {//从栈顶弹出元素
+		Item item=a[--N];
+		a[N]=null;//覆盖a[N]的引用，让java垃圾收集器回收弹出元素所占的空间
+		if(N&gt;0&amp;&amp;N==a.length/4) {//避免开辟的数组空间过大而造成浪费
+			resize(a.length/2);
+		}
+		return item;
+	}
+	
+	public Iterator&lt;Item&gt; iterator(){
+		return new ReverseArrayIterator();
+	}
+	
+	//这是一个逆向迭代数组的迭代子，因为栈总是后进先出
+	private class ReverseArrayIterator implements Iterator&lt;Item&gt;{
+		private int i=N;//在实现Iterator接口时，总需要先定义一个实例变量，用来记录当前结点，一把会把它初始化为需要开始迭代的地方
+		
+		public boolean hasNext() {
+			return i&gt;0;
+		}
+		
+		public Item next() {
+			return a[--i];
+		}
+		
+		public void remove() {
+			//书上的说法是remove方法总为空，避免迭代时修改数据结构的操作，好吧...
+		}	
+	}	
+}
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://zy-zzf2000.github.io//tag/jmC06bpXo" class="tag">
+                    算法
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zy-zzf2000.github.io//post/SimpleStack">
+                  <h3 class="post-title">
+                    栈的简单应用——双栈法实现算数表达式求值
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

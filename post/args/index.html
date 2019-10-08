@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>标签列表 | 小张的网站</title>
+<title>浅谈Java中main函数的args参数 | 小张的网站</title>
 <meta name="description" content="莫道君行早，更有早行人">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -97,20 +97,64 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <h2 class="tag-list-title">标签列表</h2>
-          <div class="tags-container">
+          <div class="post-detail">
+            <h2 class="post-title">浅谈Java中main函数的args参数</h2>
+            <div class="post-date">2019-09-18</div>
             
-              <a class="tag" href="https://zy-zzf2000.github.io//tag/pqHVN0Xj0">生活感想</a>
+            <div class="post-content">
+              <blockquote>
+<p><a href="https://jingyan.baidu.com/article/86f4a73e63862a37d6526909.html">参考链接</a></p>
+</blockquote>
+<p>在java中，main函数都有一个String【】类型的args参数，那么这个参数有什么作用呢？</p>
+<hr>
+<h1 id="1-通过查阅相关资料我发现agrs参数是用来从命令行接受用户参数的">1、通过查阅相关资料，我发现，agrs参数是用来从命令行接受用户参数的。</h1>
+<p>让我们新建一个Test类，看看args参数的具体使用过程：</p>
+<pre><code class="language-java">public class Test {
+	public static void main(String[] args) {
+		for(String arg:args) {
+			System.out.println(arg);
+		}
+	}
+}
+</code></pre>
+<p>让我们的cmd里运行这个java程序：<br>
+<img src="https://zy-zzf2000.github.io//post-images/1568992362093.png" alt=""><br>
+可以看到，输出为空。也就是说在默认情况下，args参数为空。</p>
+<p>让我们为其增加一下参数：<br>
+<img src="https://zy-zzf2000.github.io//post-images/1568992494857.png" alt=""><br>
+可以看到，输入为This is a Test，输出为This\n is\n a\n Test\n,也就是说，args是以“ ”切割输入为若干个字符串，储存在args数组中。</p>
+<h1 id="2-在eclipse中使用args参数">2、在Eclipse中使用args参数</h1>
+<p>在eclipse中，如果我们想要使用args数组，又该如何操作呢？</p>
+<ol>
+<li>鼠标右键-&gt;run as-&gt;Run Configurations</li>
+<li>在弹出的窗口中，选中Arguments菜单，在Progam arguments中输出参数，同样以“ ”为分割符。</li>
+</ol>
+
+            </div>
             
-              <a class="tag" href="https://zy-zzf2000.github.io//tag/jmC06bpXo">算法</a>
+              <div class="tag-container">
+                
+                  <a href="https://zy-zzf2000.github.io//tag/otYift0ZT" class="tag">
+                    java web
+                  </a>
+                
+              </div>
             
-              <a class="tag" href="https://zy-zzf2000.github.io//tag/zb51pIoXg">pat</a>
             
-              <a class="tag" href="https://zy-zzf2000.github.io//tag/TImPZXsFp">leetcode</a>
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zy-zzf2000.github.io//post/Shanmin">
+                  <h3 class="post-title">
+                    山民
+                  </h3>
+                </a>
+              </div>
             
-              <a class="tag" href="https://zy-zzf2000.github.io//tag/otYift0ZT">java web</a>
+
             
+
           </div>
+
         </div>
       </div>
     </div>
