@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-10-08T15:19:53.045Z</updated>
+    <updated>2019-10-09T12:54:58.078Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
@@ -32,6 +32,7 @@
         <updated>2019-10-07T15:00:06.000Z</updated>
         <content type="html"><![CDATA[<p>在代码中加入：</p>
 <pre><code>std::ios::sync_with_stdio(false);
+cin.tie(NULL);
 </code></pre>
 <p>可以使cin与cout的运行效率几乎与scanf和printf一样。</p>
 ]]></content>
