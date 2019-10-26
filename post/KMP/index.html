@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://zy-zzf2000.github.io//favicon.ico?v=1572101104090">
+<link rel="shortcut icon" href="https://zy-zzf2000.github.io//favicon.ico?v=1572102668377">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://zy-zzf2000.github.io//styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://zy-zzf2000.github.io/">
-        <img src="https://zy-zzf2000.github.io//images/avatar.png?v=1572101104090" class="site-logo">
+        <img src="https://zy-zzf2000.github.io//images/avatar.png?v=1572102668377" class="site-logo">
         <h1 class="site-title">小张的网站</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -147,17 +147,21 @@
 <p>其实，求next数组的过程完全可以看成字符串匹配的过程，即以模式字符串为主字符串，以模式字符串的前缀为目标字符串，一旦字符串匹配成功，那么当前的next值就是匹配成功的字符串的长度。<br>
 具体来说，就是从模式字符串的第一位(注意，不包括第0位)开始对自身进行匹配运算。 在任一位置，能匹配的最长长度就是当前位置的next值。</p>
 </blockquote>
+<p>我只补充一点，那就是匹配成功之后，模式字符串的指针j+1就是所谓最长长度，也就是next的值。</p>
 <p>下面是几张图片：<br>
 <img src="https://zy-zzf2000.github.io//post-images/1572100503477.jpg" alt=""><br>
 <img src="https://zy-zzf2000.github.io//post-images/1572100507615.jpg" alt=""><br>
 <img src="https://zy-zzf2000.github.io//post-images/1572100511040.jpg" alt=""><br>
 <img src="https://zy-zzf2000.github.io//post-images/1572100514912.jpg" alt=""><br>
 <img src="https://zy-zzf2000.github.io//post-images/1572100518437.jpg" alt=""><br>
-值得注意的是，计算next数组时，要从第一位开始，即第0位不参与，且联系前面的PMT数组我们知道，next数组是PMT数组整体后移一位得到的，因此在第1位得到的匹配长度实际上应该是next【2】的值，以此类推...</p>
+实际上，无论什么时候，都有next【0】=-1，next【1】=0.这是因为，next数组是由PMT数组右移一位得来，我们约定next【0】=-1，便于编程；而next【1】的值，实际上是主串第一个字符最大重复元素的长度，显然为0.<br>
+值得注意的是，计算next数组时，要从第一位开始，即第0位不参与，由于next数组是由PMT数组右移一位得来，那么，第一位所得到的值实际上是next【2】的值。<br>
+这两段也就解释了为什么上图是从next【2】开始计算的。</p>
 <pre><code class="language-c++">void getNext(char *p,int *next){
 	next[0]=-1;  //next[0]被约定为-1
-	int i=0,j=-1;
-	while(i &lt; strlen(p)) {
+	next[1]=0;   //next[1]一定是0
+	int i=1,j=0;
+	while(i &lt; strlen(p)-1) {
 		if (j == -1 || p[i] == p[j]){
 			++i;
 			++j;
