@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://zy-zzf2000.github.io//favicon.ico?v=1572100873934">
+<link rel="shortcut icon" href="https://zy-zzf2000.github.io//favicon.ico?v=1572101104090">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://zy-zzf2000.github.io//styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://zy-zzf2000.github.io/">
-        <img src="https://zy-zzf2000.github.io//images/avatar.png?v=1572100873934" class="site-logo">
+        <img src="https://zy-zzf2000.github.io//images/avatar.png?v=1572101104090" class="site-logo">
         <h1 class="site-title">小张的网站</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -117,9 +117,8 @@
 可以看到，PMT【1】=0，这是因为对于字串“ab”，它的前缀只有‘a’，后缀只有‘b’，因此没有重复部分；PMT【2】=1，这是因为对于字串“aba”，它的前缀有“a”、“ab”，后缀有“ba”、“a”，其中最大重复元素位“a”，因此最大重复元素的长度=PMT值=1。以此类推...</p>
 <p>PMT数组有什么用呢？PMT数组可以用来帮我们省去一些不必要的比较。如下图所示：<br>
 <img src="https://zy-zzf2000.github.io//post-images/1572085486261.jpg" alt=""><br>
-在图（a）中，主串与模式字符串即将发生失配。由PMT数组我们知道，对于模式字符串的子串“ababab”（即指针j前的字串），它的PMT值为4<br>
-（PMT【j-1】），也就是说，它的前缀与后缀有4位是重复的。而主串与模式字符串失配前的每一位都是一样的，于是我们可以得出，主串的i指针之前的4位，相当于“ababab”的后缀，而模式字符串的前四位，相当于“ababab”的前缀，他们也是相等的。既然模式字符串的前四位已经相等了，那么我们在下一次进行比较的时候，就没有必要再对它们进行比较了，如图（b）所示，我们保持i指针不变，直接将j指针移动到第五位，直接从模式字符串的第五位开始比较。</p>
-<p>从上面我们可以看出，如果再比较时，考虑PMT数组，那么每当发生失配时，我们的j指针就不必回溯到0，只需要回溯到j指针前一位，即PMT【j-1】所指示的位置。为了编程方便，我们将PMT数组整体后移一位，这样就得到了next数组。原来next数组只是一个提供便利的“衍生物”。如下图所示：<br>
+在图（a）中，主串与模式字符串即将发生失配。由PMT数组我们知道，对于模式字符串的子串“ababab”（即指针j前的字串），它的PMT值为4（PMT【j-1】），也就是说，它的前缀与后缀有4位是重复的。而主串与模式字符串失配前的每一位都是一样的，于是我们可以得出，主串的i指针之前的4位，相当于“ababab”的后缀，而模式字符串的前四位，相当于“ababab”的前缀，他们也是相等的。既然模式字符串的前四位已经相等了，那么我们在下一次进行比较的时候，就没有必要再对它们进行比较了，如图（b）所示，我们保持i指针不变，直接将j指针移动到第五位，直接从模式字符串的第五位开始比较。</p>
+<p>从上面我们可以看出，如果再比较时，考虑PMT数组，那么每当发生失配时，我们的j指针就不必回溯到0，只需要回溯到PMT【j-1】所指示的位置。为了编程方便，我们将PMT数组整体后移一位，这样就得到了next数组。原来next数组只是一个提供便利的“衍生物”。如下图所示：<br>
 <img src="https://zy-zzf2000.github.io//post-images/1572086367096.jpg" alt=""><br>
 在上图中可以发现next【0】被设置为了-1，这是为了便于编程，使我们知道主串在第一位便发生了失配，这时候，i指针就要向后移动一位。</p>
 <hr>
