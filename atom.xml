@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-10-09T12:56:10.959Z</updated>
+    <updated>2019-10-26T14:41:17.422Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
@@ -10,6 +10,91 @@
     <logo>https://zy-zzf2000.github.io//images/avatar.png</logo>
     <icon>https://zy-zzf2000.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小张的网站</rights>
+    <entry>
+        <title type="html"><![CDATA[KMP算法-从PMT角度理解]]></title>
+        <id>https://zy-zzf2000.github.io//post/KMP</id>
+        <link href="https://zy-zzf2000.github.io//post/KMP">
+        </link>
+        <updated>2019-10-19T14:43:45.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>在最近的课堂上，老师讲了KMP算法，但总感觉老师的推理过程有些不连贯，所以决定自己梳理一遍KMP算法</p>
+</blockquote>
+<hr>
+<h1 id="1-next数组是什么">1、next数组是什么</h1>
+<p>KMP算法的核心就是next数组。在KMP算法中，模式字符串的每一位均对应一个next值，即当主字符串与模式字符串在这一位发生失配时，模式字符串的指针不用回溯到0，只需回溯到next值即可。理解next数组是理解KMP算法的关键。</p>
+<hr>
+<h1 id="2-next数组的由来">2、next数组的由来</h1>
+<p>在课本中，KMP算法是由BF算法改进而来的。但我个人认为这样并不好理解（其实是我当初看的时候没看懂，结果上课又没听懂）。在网上查阅之后，发现从PMT数组的角度似乎能更好的理解next数组。</p>
+<p>PMT数组，即部分匹配表(Partial Match Table)，与next数组一样，对于模式字符串的每一位，它都有一个对应的值，如下图：<br>
+<img src="https://zy-zzf2000.github.io//post-images/1572084892998.jpg" alt=""><br>
+通俗的说，next数组里的值就是模式字符串当前位置子串中，前缀与后缀最大重复元素的长度。这样说也许还是难以理解，让我们用上图来举几个例子。<br>
+可以看到，PMT【1】=0，这是因为对于字串“ab”，它的前缀只有‘a’，后缀只有‘b’，因此没有重复部分；PMT【2】=1，这是因为对于字串“aba”，它的前缀有“a”、“ab”，后缀有“ba”、“a”，其中最大重复元素位“a”，因此最大重复元素的长度=PMT值=1。以此类推...</p>
+<p>PMT数组有什么用呢？PMT数组可以用来帮我们省去一些不必要的比较。如下图所示：<br>
+<img src="https://zy-zzf2000.github.io//post-images/1572085486261.jpg" alt=""><br>
+在图（a）中，主串与模式字符串即将发生失配。由PMT数组我们知道，对于模式字符串的子串“ababab”（即指针j前的字串），它的PMT值为4<br>
+（PMT【j-1】），也就是说，它的前缀与后缀有4位是重复的。而主串与模式字符串失配前的每一位都是一样的，于是我们可以得出，主串的i指针之前的4位，相当于“ababab”的后缀，而模式字符串的前四位，相当于“ababab”的前缀，他们也是相等的。既然模式字符串的前四位已经相等了，那么我们在下一次进行比较的时候，就没有必要再对它们进行比较了，如图（b）所示，我们保持i指针不变，直接将j指针移动到第五位，直接从模式字符串的第五位开始比较。</p>
+<p>从上面我们可以看出，如果再比较时，考虑PMT数组，那么每当发生失配时，我们的j指针就不必回溯到0，只需要回溯到j指针前一位，即PMT【j-1】所指示的位置。为了编程方便，我们将PMT数组整体后移一位，这样就得到了next数组。原来next数组只是一个提供便利的“衍生物”。如下图所示：<br>
+<img src="https://zy-zzf2000.github.io//post-images/1572086367096.jpg" alt=""><br>
+在上图中可以发现next【0】被设置为了-1，这是为了便于编程，使我们知道主串在第一位便发生了失配，这时候，i指针就要向后移动一位。</p>
+<hr>
+<h1 id="3-代码">3、代码</h1>
+<p>既然明白了next数组的由来，我个人认为实现它也就不困难了。</p>
+<pre><code class="language-c++">int KMP(char* t,char* p){
+	int i=0,j=0;;
+	while(i&lt;strlen(t)&amp;&amp;j&lt;strlen(p)){
+		if(j==-1){		//如果j=-1，说明主串第一个字符就与模式字符串失配 
+			i++;		//主串指针下移一位 
+			j=0;		//模式字符串指针回溯到0 
+		}
+		else if(t[i]==p[j]){	//如果当前位相等，则继续比较下一位 
+			i++;
+			j++;
+		}
+		else{			//发生失配 
+			j=next[j];	//模式字符串回溯到next[j]处 
+		}
+	}
+} 
+</code></pre>
+<p>当然，如何实现next数组甚至比KMP算法更关键<br>
+这里我直接引用知乎上的说法：</p>
+<blockquote>
+<p>其实，求next数组的过程完全可以看成字符串匹配的过程，即以模式字符串为主字符串，以模式字符串的前缀为目标字符串，一旦字符串匹配成功，那么当前的next值就是匹配成功的字符串的长度。<br>
+具体来说，就是从模式字符串的第一位(注意，不包括第0位)开始对自身进行匹配运算。 在任一位置，能匹配的最长长度就是当前位置的next值。</p>
+</blockquote>
+<p>下面是几张图片：<br>
+<img src="https://zy-zzf2000.github.io//post-images/1572100503477.jpg" alt=""><br>
+<img src="https://zy-zzf2000.github.io//post-images/1572100507615.jpg" alt=""><br>
+<img src="https://zy-zzf2000.github.io//post-images/1572100511040.jpg" alt=""><br>
+<img src="https://zy-zzf2000.github.io//post-images/1572100514912.jpg" alt=""><br>
+<img src="https://zy-zzf2000.github.io//post-images/1572100518437.jpg" alt=""><br>
+值得注意的是，计算next数组时，要从第一位开始，即第0位不参与，且联系前面的PMT数组我们知道，next数组是PMT数组整体后移一位得到的，因此在第1位得到的匹配长度实际上应该是next【2】的值，以此类推...</p>
+<pre><code class="language-c++">void getNext(char *p,int *next){
+	next[0]=-1;  //next[0]被约定为-1
+	int i=0,j=-1;
+	while(i &lt; strlen(p)) {
+		if (j == -1 || p[i] == p[j]){
+			++i;
+			++j;
+			next[i] = j;
+		}
+		else{
+			j = next[j];
+		}
+	}
+} 
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[逆波兰算法实现简单优先计算器]]></title>
+        <id>https://zy-zzf2000.github.io//post/ni-bo-lan-suan-fa-shi-xian-jian-dan-you-xian-ji-suan-ji</id>
+        <link href="https://zy-zzf2000.github.io//post/ni-bo-lan-suan-fa-shi-xian-jian-dan-you-xian-ji-suan-ji">
+        </link>
+        <updated>2019-10-17T14:43:18.000Z</updated>
+        <content type="html"><![CDATA[<p>待续..</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[近期杂谈]]></title>
         <id>https://zy-zzf2000.github.io//post/zatna01</id>
@@ -245,143 +330,6 @@ public class Myqueue&lt;Item&gt; {
 <li>鼠标右键-&gt;run as-&gt;Run Configurations</li>
 <li>在弹出的窗口中，选中Arguments菜单，在Progam arguments中输出参数，同样以“ ”为分割符。</li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[山民]]></title>
-        <id>https://zy-zzf2000.github.io//post/Shanmin</id>
-        <link href="https://zy-zzf2000.github.io//post/Shanmin">
-        </link>
-        <updated>2019-09-14T07:01:21.000Z</updated>
-        <content type="html"><![CDATA[<hr>
-<p>小时候，他问父亲</p>
-<p>“山那边是什么？”<br>
-父亲说：“是山”<br>
-“那边的那边呢？”<br>
-“山，还是山”<br>
-他不作声了，看着远处<br>
-山第一次使他这样疲倦</p>
-<p>他想，这辈子是走不出这里的群山了<br>
-海是有的，但十分遥远<br>
-他只能活几十年<br>
-所以没有等他走到那里<br>
-就已死在半路上了<br>
-死在山中</p>
-<p>他觉得应该带着老婆一起上路<br>
-老婆会给他生个儿子<br>
-到他死的时候<br>
-儿子就长大了<br>
-儿子也会有老婆<br>
-儿子也会有儿子<br>
-儿子的儿子也还会有儿子<br>
-他不再想了<br>
-儿子也使他很疲倦</p>
-<p>他只是遗憾<br>
-他的祖先没有像他一样想过<br>
-不然，见到大海的该是他了</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Union Find 的Quick union实现]]></title>
-        <id>https://zy-zzf2000.github.io//post/Quick union</id>
-        <link href="https://zy-zzf2000.github.io//post/Quick union">
-        </link>
-        <updated>2019-09-10T11:25:49.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
-<p>继上次Quick find实现，为了解决每次连通两个结点都需要历遍整个数组的缺点，还有一种Quick union的实现。</p>
-</blockquote>
-<hr>
-<h1 id="1quick-union实现的基本想法">（1）Quick union实现的基本想法</h1>
-<p>与上次一样，Quick union算法所使用的基本数据结构还是整数数组，不同的是，这次需要两个整型数组，一个为id【N】，一个为size【N】。id【N】代表的是由结点组成的一片森林，其中，数组的元素主要用来存放索引的父节点，如果id【1】的值为0，则代表1结点的父节点是0结点，size【N】主要用来存放以索引为根结点的树的大小。如size【0】的值为5，则代表以0为根结点的树大小为5（即这颗树即一共有5个结点）。<br>
-<img src="https://zy-zzf2000.github.io//post-images/1568115818472.png" alt=""></p>
-<ul>
-<li>Find方法：分别沿着id数组寻找根节点，查询两个根节点是否相同</li>
-<li>union方法：分别沿着id数组寻找根节点，将其中一个根节点改为另一个根节点的子节点。<br>
-不难发现，无论是find方法还是union方法，都需要寻找根节点，因此树的大小是影响该算法性能的一个重要因素，因此后面将对此进行优化。</li>
-</ul>
-<hr>
-<h1 id="2实现代码">(2)实现代码</h1>
-<pre><code class="language-java">public class QuickunionUF {
-	private int[] id;	 //用来保存相应索引的父节点
-	private int[] size;  //用来保存对应以相应索引为根节点的树的大小
-	
-	public QuickunionUF(int N) { //对各个结点进行初始化
-		id=new int[N];
-		for(int i=0;i&lt;N;i++) {
-			id[i] =i;
-		}
-		size=new int[N];
-		for(int i=0;i&lt;N;i++) {
-			size[i]=1;
-		}
-	}
-	
-	public int root(int p) { //寻找根节点
-		while(id[p]!=p) {
-			id[p]=id[id[p]]; //这一行是为了减少树的高度，即让每个结点指向其祖父结点
-			p=id[p];
-		}
-		return p;
-	}
-	
-	public boolean Isconnect(int p,int q) {
-		return root(p)==root(q);
-	}
-	
-	public void union(int p,int q) { //使两个结点连通
-		int rootp=root(p);
-		int rootq=root(q);
-		if(size[rootp]&lt;size[rootq]) { //根据p,q所在树的大小，尽量减小树的高度
-			id[rootp]=rootq;
-			size[rootq]=size[rootq]+size[rootp];
-		}
-		else {
-			id[rootq]=rootp;
-			size[rootp]+=size[rootq];
-		}		
-	}
-	
-	public static void main(String[] args) {
-		QuickunionUF test=new QuickunionUF(10);
-		test.union(1, 2);
-		test.union(1, 7);
-		test.union(3, 4);
-		test.union(4, 5);
-		test.union(0, 6);
-		test.union(0, 8);
-		test.union(6, 9);
-		System.out.println(&quot;2 and 7&quot;+test.Isconnect(2, 7));
-		System.out.println(&quot;3 and 5&quot;+test.Isconnect(3, 5));
-		System.out.println(&quot;0 and 9&quot;+test.Isconnect(0, 9));
-		System.out.println(&quot;0 and 7&quot;+test.Isconnect(0, 7));
-	}
-}
-</code></pre>
-<p>在上面的代码中，主要由两处进行了优化，第一处是root方法中，</p>
-<pre><code class="language-java">id[p]=id[id[p]];
-</code></pre>
-<p>这一行的代码是让结点从指向父节点该为指向祖父结点，这样就有效减少了树的高度。事实上，我们可以将所有结点都改为指向根结点（也被成为树的完全展平），进一步减小树的高度，但在实际使用中，完全展平与上述代码效率相差无几，由于上述方法只需要一行代码即可实现，我们采用上述代码。</p>
-<p>第二处优化是union方法中，</p>
-<pre><code class="language-java">if(size[rootp]&lt;size[rootq]) { //根据p,q所在树的大小，尽量减小树的高度
-			id[rootp]=rootq;
-			size[rootq]=size[rootq]+size[rootp];
-		}
-		else {
-			id[rootq]=rootp;
-			size[rootp]+=size[rootq];
-		}
-</code></pre>
-<p>在union方法中，我们根据树的大小进行不同的操作。可以发现，我们总是让大树<br>
-的根节点成为小树根节点的父节点。这样做同样是为了减少树的高度。</p>
-<p>事实上，我们可以证明，在不考虑优化一（仅有优化二）的前提下，若共有k个结点，则树的高度至多为lgk。下面是一个证明：</p>
-<ol>
-<li>初始条件下，当k=1时，树高为0.</li>
-<li>若k！=1，假设当前需要归并的树大小为i时，性质成立，即树高为lgi。因为只有与大小不小于自己的树归并，树高才会发生变化，因此我们设i&lt;=j且i+j=k（最坏情况）。这时，树高为lgi+1=lg（i+i）&lt;=lg（i+k）=lgk，注意，lg以2为底。</li>
-</ol>
-<hr>
-<h1 id="3quick-union的优缺点">（3）Quick union的优缺点</h1>
-<p>优点：仅仅只有优化二的Quick union的union方法与find方法的的时间复杂度均为O（lgN），而加上优化一之后，find方法与union方法的时间复杂度非常接近于O（1）。<br>
-缺点：暂无。</p>
 ]]></content>
     </entry>
 </feed>
