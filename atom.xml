@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-10-26T15:43:16.259Z</updated>
+    <updated>2019-10-27T02:15:50.408Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
@@ -10,6 +10,16 @@
     <logo>https://zy-zzf2000.github.io//images/avatar.png</logo>
     <icon>https://zy-zzf2000.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小张的网站</rights>
+    <entry>
+        <title type="html"><![CDATA[我是想站着，还把钱挣了]]></title>
+        <id>https://zy-zzf2000.github.io//post/让子弹飞</id>
+        <link href="https://zy-zzf2000.github.io//post/让子弹飞">
+        </link>
+        <updated>2019-10-27T02:14:13.000Z</updated>
+        <content type="html"><![CDATA[<p><img src="https://zy-zzf2000.github.io//post-images/1572142513406.jpg" alt=""><br>
+tmd，这大叔也太帅了</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[KMP算法-从PMT角度理解]]></title>
         <id>https://zy-zzf2000.github.io//post/KMP</id>
@@ -314,8 +324,7 @@ int main(){
         <content type="html"><![CDATA[<ol>
 <li>算法第四版真是太难啃了，我决定先啃算法笔记。</li>
 <li>我居然开始享受健身的过程。看到自己在向好的方向变化真的会让人上瘾。</li>
-<li>果然忙起来就没时间想这想那的了。无所事事的人最容易胡思乱想。</li>
-<li>学校奖学金啥时候发啊，没蛋白粉增肌太慢了。</li>
+<li>无所事事的人最容易胡思乱想。</li>
 </ol>
 ]]></content>
     </entry>
@@ -505,41 +514,6 @@ public class Myqueue&lt;Item&gt; {
 	}		
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[浅谈Java中main函数的args参数]]></title>
-        <id>https://zy-zzf2000.github.io//post/args</id>
-        <link href="https://zy-zzf2000.github.io//post/args">
-        </link>
-        <updated>2019-09-18T10:56:52.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
-<p><a href="https://jingyan.baidu.com/article/86f4a73e63862a37d6526909.html">参考链接</a></p>
-</blockquote>
-<p>在java中，main函数都有一个String【】类型的args参数，那么这个参数有什么作用呢？</p>
-<hr>
-<h1 id="1-通过查阅相关资料我发现agrs参数是用来从命令行接受用户参数的">1、通过查阅相关资料，我发现，agrs参数是用来从命令行接受用户参数的。</h1>
-<p>让我们新建一个Test类，看看args参数的具体使用过程：</p>
-<pre><code class="language-java">public class Test {
-	public static void main(String[] args) {
-		for(String arg:args) {
-			System.out.println(arg);
-		}
-	}
-}
-</code></pre>
-<p>让我们的cmd里运行这个java程序：<br>
-<img src="https://zy-zzf2000.github.io//post-images/1568992362093.png" alt=""><br>
-可以看到，输出为空。也就是说在默认情况下，args参数为空。</p>
-<p>让我们为其增加一下参数：<br>
-<img src="https://zy-zzf2000.github.io//post-images/1568992494857.png" alt=""><br>
-可以看到，输入为This is a Test，输出为This\n is\n a\n Test\n,也就是说，args是以“ ”切割输入为若干个字符串，储存在args数组中。</p>
-<h1 id="2-在eclipse中使用args参数">2、在Eclipse中使用args参数</h1>
-<p>在eclipse中，如果我们想要使用args数组，又该如何操作呢？</p>
-<ol>
-<li>鼠标右键-&gt;run as-&gt;Run Configurations</li>
-<li>在弹出的窗口中，选中Arguments菜单，在Progam arguments中输出参数，同样以“ ”为分割符。</li>
-</ol>
 ]]></content>
     </entry>
 </feed>
