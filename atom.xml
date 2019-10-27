@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-10-27T02:15:50.408Z</updated>
+    <updated>2019-10-27T02:31:17.063Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
@@ -16,8 +16,7 @@
         <link href="https://zy-zzf2000.github.io//post/让子弹飞">
         </link>
         <updated>2019-10-27T02:14:13.000Z</updated>
-        <content type="html"><![CDATA[<p><img src="https://zy-zzf2000.github.io//post-images/1572142513406.jpg" alt=""><br>
-tmd，这大叔也太帅了</p>
+        <content type="html"><![CDATA[<p>tmd，这大叔也太帅了</p>
 ]]></content>
     </entry>
     <entry>
