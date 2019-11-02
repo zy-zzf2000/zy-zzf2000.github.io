@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Union Find 的Quick find实现 | 小张的网站</title>
+<title>散列 | 小张的网站</title>
 <meta name="description" content="莫道君行早，更有早行人">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -92,79 +92,20 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Union Find 的Quick find实现</h2>
-            <div class="post-date">2019-09-09</div>
+            <h2 class="post-title">散列</h2>
+            <div class="post-date">2019-10-31</div>
             
             <div class="post-content">
-              <blockquote>
-<p>Union FInd，在我个人的理解，就是点与点之间是否互相连通的问题。具体关于问题的描述，可以<a href="https://blog.csdn.net/guoziqing506/article/details/78752557">参考这里</a>动态连通性的前三段，或者Algorithm 4th的P136-1.5.1</p>
-</blockquote>
-<h1 id="1quick-find实现的基本想法">（1）Quick find实现的基本想法：</h1>
-<p>通过一个整数数组来保存图中所有的点及它们之间的关系，更具体来说，两个点P与Q是连通的，当且仅当索引P与索引Q在数组中所对应的项是相同的。这样说可能有点难以理解，下面看一个例子：<br>
-<img src="https://zy-zzf2000.github.io//post-images/1568043231866.png" alt=""><br>
-图中的数组保存了10个点的关系，可以看到，{0，5，6}，{1，2，7}，{8，3，4，9}分别是三个连通分支，所以id【0】=id【5】=id【6】=0...</p>
-<hr>
-<h1 id="2实现代码">（2）实现代码：</h1>
-<pre><code class="language-java">public class QuickFindUF {
-	private int[] id;
-	
-	public QuickFindUF(int N) {//输入元素个数N，进行初始化
-		id=new int[N];
-		for(int i=0;i&lt;N;i++) {
-			id[i]=i;
-		}
-	}
-	
-	public boolean Isconnected(int p,int q) { //如果两个索引对应的值相等，则说明pq相连
-		return id[p]==id[q];
-	}
-	
-	public void union(int p,int q) {//实现将pq相连的方法，在这里，我们让数组中所有值等于id【p】的索引的值都改为id【q】，因为一个元素如果与连通分支中的一个元素相连，那么它与该连通分支的其他元素也相连。
-		int pid=id[p];
-		int qid=id[q];
-		for(int i=0;i&lt;id.length;i++) {
-			if(id[i]==pid) {
-				id[i]=qid;
-			}
-		}
-	}
-	
-	public static void main(String[] args) {
-		QuickFindUF demo=new QuickFindUF(10);
-		demo.union(0, 1);
-		demo.union(1, 2);
-		demo.union(2, 3);
-		demo.union(4, 5);
-		demo.union(5, 6);
-		demo.union(6, 7);
-		demo.union(7, 8);
-		System.out.println(&quot;0 and 3&quot;+demo.Isconnected(0, 3));
-		System.out.println(&quot;4 and 8&quot;+demo.Isconnected(4, 8));
-		System.out.println(&quot;0 and 9&quot;+demo.Isconnected(0, 9));
-	}
-}
-</code></pre>
-<hr>
-<h1 id="3quick-find实现的优缺点">(3)Quick Find实现的优缺点：</h1>
-<p>优点：查询两个点是否连接的效率非常高，仅需访问数组一次。<br>
-缺点：连接两个点是效率极低，需要历遍整个数组，算法效率为N乘以某个常数</p>
+              <p>待续...</p>
 
             </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://zy-zzf2000.github.io//tag/jmC06bpXo" class="tag">
-                    算法
-                  </a>
-                
-              </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zy-zzf2000.github.io//post/Iterable">
+                <a href="https://zy-zzf2000.github.io//post/让子弹飞">
                   <h3 class="post-title">
-                    Java语言中如何使一个类可迭代
+                    我是想站着，还把钱挣了
                   </h3>
                 </a>
               </div>

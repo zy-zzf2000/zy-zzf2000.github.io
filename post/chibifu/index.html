@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Union Find 的Quick find实现 | 小张的网站</title>
+<title>赤壁赋 | 小张的网站</title>
 <meta name="description" content="莫道君行早，更有早行人">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -92,69 +92,25 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Union Find 的Quick find实现</h2>
-            <div class="post-date">2019-09-09</div>
+            <h2 class="post-title">赤壁赋</h2>
+            <div class="post-date">2019-11-02</div>
+            
+              <div class="feature-container" style="background-image: url('https://zy-zzf2000.github.io//post-images/chibifu.jpg')">
+              </div>
             
             <div class="post-content">
-              <blockquote>
-<p>Union FInd，在我个人的理解，就是点与点之间是否互相连通的问题。具体关于问题的描述，可以<a href="https://blog.csdn.net/guoziqing506/article/details/78752557">参考这里</a>动态连通性的前三段，或者Algorithm 4th的P136-1.5.1</p>
-</blockquote>
-<h1 id="1quick-find实现的基本想法">（1）Quick find实现的基本想法：</h1>
-<p>通过一个整数数组来保存图中所有的点及它们之间的关系，更具体来说，两个点P与Q是连通的，当且仅当索引P与索引Q在数组中所对应的项是相同的。这样说可能有点难以理解，下面看一个例子：<br>
-<img src="https://zy-zzf2000.github.io//post-images/1568043231866.png" alt=""><br>
-图中的数组保存了10个点的关系，可以看到，{0，5，6}，{1，2，7}，{8，3，4，9}分别是三个连通分支，所以id【0】=id【5】=id【6】=0...</p>
-<hr>
-<h1 id="2实现代码">（2）实现代码：</h1>
-<pre><code class="language-java">public class QuickFindUF {
-	private int[] id;
-	
-	public QuickFindUF(int N) {//输入元素个数N，进行初始化
-		id=new int[N];
-		for(int i=0;i&lt;N;i++) {
-			id[i]=i;
-		}
-	}
-	
-	public boolean Isconnected(int p,int q) { //如果两个索引对应的值相等，则说明pq相连
-		return id[p]==id[q];
-	}
-	
-	public void union(int p,int q) {//实现将pq相连的方法，在这里，我们让数组中所有值等于id【p】的索引的值都改为id【q】，因为一个元素如果与连通分支中的一个元素相连，那么它与该连通分支的其他元素也相连。
-		int pid=id[p];
-		int qid=id[q];
-		for(int i=0;i&lt;id.length;i++) {
-			if(id[i]==pid) {
-				id[i]=qid;
-			}
-		}
-	}
-	
-	public static void main(String[] args) {
-		QuickFindUF demo=new QuickFindUF(10);
-		demo.union(0, 1);
-		demo.union(1, 2);
-		demo.union(2, 3);
-		demo.union(4, 5);
-		demo.union(5, 6);
-		demo.union(6, 7);
-		demo.union(7, 8);
-		System.out.println(&quot;0 and 3&quot;+demo.Isconnected(0, 3));
-		System.out.println(&quot;4 and 8&quot;+demo.Isconnected(4, 8));
-		System.out.println(&quot;0 and 9&quot;+demo.Isconnected(0, 9));
-	}
-}
-</code></pre>
-<hr>
-<h1 id="3quick-find实现的优缺点">(3)Quick Find实现的优缺点：</h1>
-<p>优点：查询两个点是否连接的效率非常高，仅需访问数组一次。<br>
-缺点：连接两个点是效率极低，需要历遍整个数组，算法效率为N乘以某个常数</p>
+              <p>壬戌之秋，七月既望，苏子与客泛舟游于赤壁之下。清风徐来，水波不兴。举酒属客，诵明月之诗，歌窈窕之章。少焉，月出于东山之上，徘徊于斗牛之间。白露横江，水光接天。纵一苇之所如，凌万顷之茫然。浩浩乎如冯虚御风，而不知其所止；飘飘乎如遗世独立，羽化而登仙。</p>
+<p>于是饮酒乐甚，扣舷而歌之。歌曰：“桂棹兮兰桨，击空明兮溯流光。渺渺兮予怀，望美人兮天一方。”客有吹洞箫者，倚歌而和之。其声呜呜然，如怨如慕，如泣如诉，余音袅袅，不绝如缕。舞幽壑之潜蛟，泣孤舟之嫠妇。</p>
+<p>苏子愀然，正襟危坐而问客曰：“何为其然也？”客曰：“月明星稀，乌鹊南飞，此非曹孟德之诗乎？西望夏口，东望武昌，山川相缪，郁乎苍苍，此非孟德之困于周郎者乎？方其破荆州，下江陵，顺流而东也，舳舻千里，旌旗蔽空，酾酒临江，横槊赋诗，固一世之雄也，而今安在哉？况吾与子渔樵于江渚之上，侣鱼虾而友麋鹿，驾一叶之扁舟，举匏樽以相属。<strong>寄蜉蝣于天地，渺沧海之一粟。哀吾生之须臾，羡长江之无穷。挟飞仙以遨游，抱明月而长终。知不可乎骤得，托遗响于悲风。”</strong></p>
+<p>苏子曰：“客亦知夫水与月乎？逝者如斯，而未尝往也；盈虚者如彼，而卒莫消长也。盖将自其变者而观之，则天地曾不能以一瞬；自其不变者而观之，则物与我皆无尽也，而又何羡乎!且夫天地之间，物各有主,苟非吾之所有，虽一毫而莫取。惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭，是造物者之无尽藏也，而吾与子之所共适。”</p>
+<p>客喜而笑，洗盏更酌。肴核既尽，杯盘狼籍。相与枕藉乎舟中，不知东方之既白。</p>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://zy-zzf2000.github.io//tag/jmC06bpXo" class="tag">
-                    算法
+                  <a href="https://zy-zzf2000.github.io//tag/pqHVN0Xj0" class="tag">
+                    生活感想
                   </a>
                 
               </div>
@@ -162,9 +118,9 @@
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zy-zzf2000.github.io//post/Iterable">
+                <a href="https://zy-zzf2000.github.io//post/san-lie">
                   <h3 class="post-title">
-                    Java语言中如何使一个类可迭代
+                    散列
                   </h3>
                 </a>
               </div>
