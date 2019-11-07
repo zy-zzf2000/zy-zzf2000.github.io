@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-11-02T06:11:11.330Z</updated>
+    <updated>2019-11-07T11:57:01.908Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
@@ -10,6 +10,28 @@
     <logo>https://zy-zzf2000.github.io//images/avatar.png</logo>
     <icon>https://zy-zzf2000.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小张的网站</rights>
+    <entry>
+        <title type="html"><![CDATA[2019]]></title>
+        <id>https://zy-zzf2000.github.io//post/2019</id>
+        <link href="https://zy-zzf2000.github.io//post/2019">
+        </link>
+        <updated>2019-11-07T11:54:58.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="things-that-i-have-done">Things that I have done...</h1>
+<hr>
+<h1 id="things-that-i-shouldt-have-done">Things that I should't have done...</h1>
+<hr>
+<h1 id="things-that-i-should-have-done">Things that I should have done...</h1>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Sonnet 18]]></title>
+        <id>https://zy-zzf2000.github.io//post/sonnet-18</id>
+        <link href="https://zy-zzf2000.github.io//post/sonnet-18">
+        </link>
+        <updated>2019-11-04T12:24:59.000Z</updated>
+        <content type="html"><![CDATA[<p>to be continue...</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[赤壁赋]]></title>
         <id>https://zy-zzf2000.github.io//post/chibifu</id>
@@ -386,64 +408,6 @@ cin.tie(NULL);
 <hr>
 <h1 id="3-当排序有并列时应该怎么样做">3、当排序有并列时，应该怎么样做。</h1>
 <p>让排序后的第一个元素排名为1，定义一个int 型变量r=1，遍历所有元素，当当前元素分数等于上一个元素时，当前元素排名也等于上一个元素，否则令元素排名为r。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[双指针法]]></title>
-        <id>https://zy-zzf2000.github.io//post/doubleptr</id>
-        <link href="https://zy-zzf2000.github.io//post/doubleptr">
-        </link>
-        <updated>2019-10-01T11:04:12.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
-<p>通过两道例题来体会双指针法的使用。</p>
-</blockquote>
-<hr>
-<h1 id="1">1、</h1>
-<blockquote>
-<p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
-</blockquote>
-<p>数组完成排序后，我们可以放置两个指针 i 和 j，其中i是慢指针，而j是快指针。只要 nums[i]=nums[j]nums[i] = nums[j]nums[i]=nums[j]，我们就增加j以跳过重复项。<br>
-当我们遇到 nums[j]≠nums[i]nums[j]时，跳过重复项的运行已经结束，因此我们必须把它（nums[j]）的值复制到 nums[i+1]上。然后递增i，接着我们将再次重复相同的过程，直到j到达数组的末尾为止。</p>
-<pre><code class="language-java">public int removeDuplicates(int[] nums) {
-    if (nums.length == 0) return 0;
-    int i = 0;
-    for (int j = 1; j &lt; nums.length; j++) {
-        if (nums[j] != nums[i]) {
-            i++;
-            nums[i] = nums[j];
-        }
-    }
-    return i + 1;
-}
-</code></pre>
-<hr>
-<h1 id="2">2、</h1>
-<blockquote>
-<p>给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。<br>
-不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。<br>
-元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
-</blockquote>
-<p>同上，我们可以保留两个指针i和j，其中i时慢指针，j是快指针。当 nums[j] 与给定的值相等时，递增j以跳过该元素。只要 nums[j]≠val，我们就复制 nums[j] 到 nums[i] 并同时递增两个索引。重复这一过程，直到j到达数组的末尾，该数组的新长度为i。</p>
-<pre><code class="language-java">public int removeElement(int[] nums, int val) {
-    int i = 0;
-    for (int j = 0; j &lt; nums.length; j++) {
-        if (nums[j] != val) {
-            nums[i] = nums[j];
-            i++;
-        }
-    }
-    return i;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[初级排序算法——希尔排序]]></title>
-        <id>https://zy-zzf2000.github.io//post/chu-ji-pai-xu-suan-fa-xi-er-pai-xu</id>
-        <link href="https://zy-zzf2000.github.io//post/chu-ji-pai-xu-suan-fa-xi-er-pai-xu">
-        </link>
-        <updated>2019-09-24T07:47:20.000Z</updated>
-        <content type="html"><![CDATA[<p>1</p>
 ]]></content>
     </entry>
 </feed>
