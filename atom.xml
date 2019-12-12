@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-12-12T15:41:17.929Z</updated>
+    <updated>2019-12-12T15:43:26.930Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
@@ -10,6 +10,16 @@
     <logo>https://zy-zzf2000.github.io//images/avatar.png</logo>
     <icon>https://zy-zzf2000.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小张的网站</rights>
+    <entry>
+        <title type="html"><![CDATA[12.12]]></title>
+        <id>https://zy-zzf2000.github.io//post/1212</id>
+        <link href="https://zy-zzf2000.github.io//post/1212">
+        </link>
+        <updated>2019-12-12T15:41:20.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="现在穿在身上的衣服里最贵的是">现在穿在身上的衣服里最贵的是</h1>
+<p>一件价值59元的T恤</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2019]]></title>
         <id>https://zy-zzf2000.github.io//post/2019</id>
@@ -382,32 +392,6 @@ int main(){
 cin.tie(NULL);
 </code></pre>
 <p>可以使cin与cout的运行效率几乎与scanf和printf一样。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[c++ sort函数的基本应用]]></title>
-        <id>https://zy-zzf2000.github.io//post/sort</id>
-        <link href="https://zy-zzf2000.github.io//post/sort">
-        </link>
-        <updated>2019-10-07T14:02:18.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="1-sort函数的基本格式">1、sort函数的基本格式：</h1>
-<p>sort（首元素地址，尾元素地址的下一个地址，cmp（非必填））</p>
-<hr>
-<h1 id="2-cmp函数">2、cmp函数</h1>
-<p>cmp函数是一个自定义的比较函数，它返回一个bool值，用于返回两个类在sort函数中的大小关系。如：</p>
-<pre><code class="language-c++">bool cmp(student a,student b){
-	if(a.score!=b.score){
-		return a.score&gt;b.score;
-	}
-	else{
-		return a.id&lt;b.id;
-	}
-}
-</code></pre>
-<p>这段代码表示当学生成绩不一致时，按成绩从大到小排序，否则，按学号从小到大排序。</p>
-<hr>
-<h1 id="3-当排序有并列时应该怎么样做">3、当排序有并列时，应该怎么样做。</h1>
-<p>让排序后的第一个元素排名为1，定义一个int 型变量r=1，遍历所有元素，当当前元素分数等于上一个元素时，当前元素排名也等于上一个元素，否则令元素排名为r。</p>
 ]]></content>
     </entry>
 </feed>
