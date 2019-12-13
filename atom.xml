@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-12-12T15:43:26.930Z</updated>
+    <updated>2019-12-13T15:35:24.940Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
@@ -10,6 +10,16 @@
     <logo>https://zy-zzf2000.github.io//images/avatar.png</logo>
     <icon>https://zy-zzf2000.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小张的网站</rights>
+    <entry>
+        <title type="html"><![CDATA[12.13]]></title>
+        <id>https://zy-zzf2000.github.io//post/1213</id>
+        <link href="https://zy-zzf2000.github.io//post/1213">
+        </link>
+        <updated>2019-12-13T15:34:31.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="早餐吃了什么">早餐吃了什么？</h1>
+<p>公一的混沌+2个肉包</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[12.12]]></title>
         <id>https://zy-zzf2000.github.io//post/1212</id>
@@ -379,19 +389,6 @@ int main(){
 <li>我居然开始享受健身的过程。看到自己在向好的方向变化真的会让人上瘾。</li>
 <li>无所事事的人最容易胡思乱想。</li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[cin和cout运行超时的问题]]></title>
-        <id>https://zy-zzf2000.github.io//post/ioc</id>
-        <link href="https://zy-zzf2000.github.io//post/ioc">
-        </link>
-        <updated>2019-10-07T15:00:06.000Z</updated>
-        <content type="html"><![CDATA[<p>在代码中加入：</p>
-<pre><code>std::ios::sync_with_stdio(false);
-cin.tie(NULL);
-</code></pre>
-<p>可以使cin与cout的运行效率几乎与scanf和printf一样。</p>
 ]]></content>
     </entry>
 </feed>
