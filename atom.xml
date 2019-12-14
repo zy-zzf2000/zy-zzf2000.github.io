@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-12-13T15:35:24.940Z</updated>
+    <updated>2019-12-14T15:50:40.469Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
@@ -10,6 +10,18 @@
     <logo>https://zy-zzf2000.github.io//images/avatar.png</logo>
     <icon>https://zy-zzf2000.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 小张的网站</rights>
+    <entry>
+        <title type="html"><![CDATA[12.14]]></title>
+        <id>https://zy-zzf2000.github.io//post/1214</id>
+        <link href="https://zy-zzf2000.github.io//post/1214">
+        </link>
+        <updated>2019-12-14T15:48:52.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="今晚怎么过">今晚怎么过</h1>
+<p>吃饭洗澡：6~7点<br>
+组会：7~10点<br>
+复习大物实验：10~12点</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[12.13]]></title>
         <id>https://zy-zzf2000.github.io//post/1213</id>
@@ -376,19 +388,6 @@ int main(){
 	return 0;
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[近期杂谈]]></title>
-        <id>https://zy-zzf2000.github.io//post/zatna01</id>
-        <link href="https://zy-zzf2000.github.io//post/zatna01">
-        </link>
-        <updated>2019-10-08T15:16:27.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>算法第四版真是太难啃了，我决定先啃算法笔记。</li>
-<li>我居然开始享受健身的过程。看到自己在向好的方向变化真的会让人上瘾。</li>
-<li>无所事事的人最容易胡思乱想。</li>
-</ol>
 ]]></content>
     </entry>
 </feed>
