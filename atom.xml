@@ -2,117 +2,112 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2019-12-16T15:38:42.602Z</updated>
+    <updated>2020-01-10T15:36:23.344Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io//atom.xml"/>
     <subtitle>莫道君行早，更有早行人</subtitle>
     <logo>https://zy-zzf2000.github.io//images/avatar.png</logo>
     <icon>https://zy-zzf2000.github.io//favicon.ico</icon>
-    <rights>All rights reserved 2019, 小张的网站</rights>
+    <rights>All rights reserved 2020, 小张的网站</rights>
     <entry>
-        <title type="html"><![CDATA[12.16]]></title>
-        <id>https://zy-zzf2000.github.io//post/1216</id>
-        <link href="https://zy-zzf2000.github.io//post/1216">
+        <title type="html"><![CDATA[1.10]]></title>
+        <id>https://zy-zzf2000.github.io//post/110</id>
+        <link href="https://zy-zzf2000.github.io//post/110">
         </link>
-        <updated>2019-12-16T15:36:26.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="明天必须要联系的人是谁">明天必须要联系的人是谁？</h1>
-<p>六道口URP小组成员</p>
+        <updated>2020-01-10T15:35:04.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="5件出门的时候必须带的东西">5件出门的时候必须带的东西</h1>
+<p>纸巾、钥匙、手机、矿泉水瓶/保温杯、书包</p>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[12.15]]></title>
-        <id>https://zy-zzf2000.github.io//post/1215</id>
-        <link href="https://zy-zzf2000.github.io//post/1215">
+        <title type="html"><![CDATA[1.9]]></title>
+        <id>https://zy-zzf2000.github.io//post/19</id>
+        <link href="https://zy-zzf2000.github.io//post/19">
         </link>
-        <updated>2019-12-15T14:33:02.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="现在身上穿的衣服里最新的一件是">现在身上穿的衣服里最新的一件是</h1>
-<p>身上的一件卫衣</p>
+        <updated>2020-01-09T15:38:57.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="今天被___叫醒">今天被___叫醒</h1>
+<p>叫醒我的不是我的闹钟，是理想</p>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[12.14]]></title>
-        <id>https://zy-zzf2000.github.io//post/1214</id>
-        <link href="https://zy-zzf2000.github.io//post/1214">
+        <title type="html"><![CDATA[1.8]]></title>
+        <id>https://zy-zzf2000.github.io//post/18</id>
+        <link href="https://zy-zzf2000.github.io//post/18">
         </link>
-        <updated>2019-12-14T15:48:52.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="今晚怎么过">今晚怎么过</h1>
-<p>吃饭洗澡：6~7点<br>
-组会：7~10点<br>
-复习大物实验：10~12点</p>
+        <updated>2020-01-08T15:29:25.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="今天非买不可的东西">今天非买不可的东西</h1>
+<p>把自己的心买回来</p>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[12.13]]></title>
-        <id>https://zy-zzf2000.github.io//post/1213</id>
-        <link href="https://zy-zzf2000.github.io//post/1213">
+        <title type="html"><![CDATA[1.6]]></title>
+        <id>https://zy-zzf2000.github.io//post/16</id>
+        <link href="https://zy-zzf2000.github.io//post/16">
         </link>
-        <updated>2019-12-13T15:34:31.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="早餐吃了什么">早餐吃了什么？</h1>
-<p>公一的混沌+2个肉包</p>
+        <updated>2020-01-07T15:41:44.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="今天吃到的最好吃的东西是什么">今天吃到的最好吃的东西是什么</h1>
+<p>大盘笋还挺好吃的，在学校很少吃到笋，好像是第二次</p>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[12.12]]></title>
-        <id>https://zy-zzf2000.github.io//post/1212</id>
-        <link href="https://zy-zzf2000.github.io//post/1212">
+        <title type="html"><![CDATA[1.7]]></title>
+        <id>https://zy-zzf2000.github.io//post/17</id>
+        <link href="https://zy-zzf2000.github.io//post/17">
         </link>
-        <updated>2019-12-12T15:41:20.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="现在穿在身上的衣服里最贵的是">现在穿在身上的衣服里最贵的是</h1>
-<p>一件价值59元的T恤</p>
+        <updated>2020-01-07T15:39:45.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="今天因为___而感到无力">今天因为___而感到无力</h1>
+<p>今天还挺开心的，好像没有什么特别感到无力的事情，那就今天多云，因为太阳灰蒙蒙的感到无力8</p>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2019]]></title>
-        <id>https://zy-zzf2000.github.io//post/2019</id>
-        <link href="https://zy-zzf2000.github.io//post/2019">
+        <title type="html"><![CDATA[1.5]]></title>
+        <id>https://zy-zzf2000.github.io//post/15</id>
+        <link href="https://zy-zzf2000.github.io//post/15">
         </link>
-        <updated>2019-11-07T11:54:58.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="things-that-i-have-done">Things that I have done...</h1>
-<hr>
-<h1 id="things-that-i-shouldt-have-done">Things that I should't have done...</h1>
-<hr>
-<h1 id="things-that-i-should-have-done">Things that I should have done...</h1>
+        <updated>2020-01-05T15:34:56.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="今天的天气">今天的天气</h1>
+<p>今天白天的天气灰蒙蒙的，感觉太阳没有活力，晚上下了一场大雪</p>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Sonnet 18]]></title>
-        <id>https://zy-zzf2000.github.io//post/sonnet-18</id>
-        <link href="https://zy-zzf2000.github.io//post/sonnet-18">
+        <title type="html"><![CDATA[1.4]]></title>
+        <id>https://zy-zzf2000.github.io//post/14</id>
+        <link href="https://zy-zzf2000.github.io//post/14">
         </link>
-        <updated>2019-11-04T12:24:59.000Z</updated>
-        <content type="html"><![CDATA[<p>to be continue...</p>
+        <updated>2020-01-05T15:33:07.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="今天想要表扬自己____">今天想要表扬自己____</h1>
+<p>跟wjy在一起的一天很开心；<br>
+刻苦爆肝概率论到晚上一点半的一天</p>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[赤壁赋]]></title>
-        <id>https://zy-zzf2000.github.io//post/chibifu</id>
-        <link href="https://zy-zzf2000.github.io//post/chibifu">
+        <title type="html"><![CDATA[1.3]]></title>
+        <id>https://zy-zzf2000.github.io//post/13</id>
+        <link href="https://zy-zzf2000.github.io//post/13">
         </link>
-        <updated>2019-11-02T06:04:44.000Z</updated>
-        <content type="html"><![CDATA[<p>壬戌之秋，七月既望，苏子与客泛舟游于赤壁之下。清风徐来，水波不兴。举酒属客，诵明月之诗，歌窈窕之章。少焉，月出于东山之上，徘徊于斗牛之间。白露横江，水光接天。纵一苇之所如，凌万顷之茫然。浩浩乎如冯虚御风，而不知其所止；飘飘乎如遗世独立，羽化而登仙。</p>
-<p>于是饮酒乐甚，扣舷而歌之。歌曰：“桂棹兮兰桨，击空明兮溯流光。渺渺兮予怀，望美人兮天一方。”客有吹洞箫者，倚歌而和之。其声呜呜然，如怨如慕，如泣如诉，余音袅袅，不绝如缕。舞幽壑之潜蛟，泣孤舟之嫠妇。</p>
-<p>苏子愀然，正襟危坐而问客曰：“何为其然也？”客曰：“月明星稀，乌鹊南飞，此非曹孟德之诗乎？西望夏口，东望武昌，山川相缪，郁乎苍苍，此非孟德之困于周郎者乎？方其破荆州，下江陵，顺流而东也，舳舻千里，旌旗蔽空，酾酒临江，横槊赋诗，固一世之雄也，而今安在哉？况吾与子渔樵于江渚之上，侣鱼虾而友麋鹿，驾一叶之扁舟，举匏樽以相属。<strong>寄蜉蝣于天地，渺沧海之一粟。哀吾生之须臾，羡长江之无穷。挟飞仙以遨游，抱明月而长终。知不可乎骤得，托遗响于悲风。”</strong></p>
-<p>苏子曰：“客亦知夫水与月乎？逝者如斯，而未尝往也；盈虚者如彼，而卒莫消长也。盖将自其变者而观之，则天地曾不能以一瞬；自其不变者而观之，则物与我皆无尽也，而又何羡乎!且夫天地之间，物各有主,苟非吾之所有，虽一毫而莫取。惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭，是造物者之无尽藏也，而吾与子之所共适。”</p>
-<p>客喜而笑，洗盏更酌。肴核既尽，杯盘狼籍。相与枕藉乎舟中，不知东方之既白。</p>
+        <updated>2020-01-03T15:43:29.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="昨晚梦见了什么">昨晚梦见了什么</h1>
+<p>被一只蛇咬伤了，蛇通体银色，身上又一圈一圈的的花纹，跟亲戚在一块，向他们求助，他们不着急，然后喘不过气来，醒。</p>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[散列]]></title>
-        <id>https://zy-zzf2000.github.io//post/san-lie</id>
-        <link href="https://zy-zzf2000.github.io//post/san-lie">
+        <title type="html"><![CDATA[1.2]]></title>
+        <id>https://zy-zzf2000.github.io//post/12</id>
+        <link href="https://zy-zzf2000.github.io//post/12">
         </link>
-        <updated>2019-10-31T04:54:14.000Z</updated>
-        <content type="html"><![CDATA[<p>待续...</p>
+        <updated>2020-01-02T15:50:09.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="今天的___笑了">今天的___笑了</h1>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[我是想站着，还把钱挣了]]></title>
-        <id>https://zy-zzf2000.github.io//post/让子弹飞</id>
-        <link href="https://zy-zzf2000.github.io//post/让子弹飞">
+        <title type="html"><![CDATA[1.1]]></title>
+        <id>https://zy-zzf2000.github.io//post/jin-nian-de-mu-biao-shi-shi-me</id>
+        <link href="https://zy-zzf2000.github.io//post/jin-nian-de-mu-biao-shi-shi-me">
         </link>
-        <updated>2019-10-27T02:14:13.000Z</updated>
-        <content type="html"><![CDATA[<p>tmd，这大叔也太帅了</p>
+        <updated>2020-01-01T15:45:31.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="今年的目标是什么">今年的目标是什么</h1>
+<p>坚持健身，调整好心态，保持好绩点，放松一个学期</p>
 ]]></content>
     </entry>
 </feed>
