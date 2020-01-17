@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2020-01-17T08:50:39.452Z</updated>
+    <updated>2020-01-17T08:52:03.998Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io/atom.xml"/>
@@ -103,6 +103,7 @@
         <content type="html"><![CDATA[<blockquote>
 <p>我们是获得了生命的星尘，然后被宇宙赋予了发现自我的使命。</p>
 </blockquote>
+<p>草，说好的简介，这书怎么这么难</p>
 ]]></content>
     </entry>
     <entry>
