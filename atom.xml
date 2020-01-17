@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2020-01-17T08:42:20.359Z</updated>
+    <updated>2020-01-17T08:43:36.317Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io/atom.xml"/>
@@ -16,13 +16,13 @@
         <link href="https://zy-zzf2000.github.io/post/preceptron">
         </link>
         <updated>2020-01-17T02:09:18.000Z</updated>
-        <content type="html"><![CDATA[<p>一、超平面</p>
-<h2 id="1什么是超平面">（1）什么是超平面</h2>
+        <content type="html"><![CDATA[<p>##一、超平面</p>
+<h3 id="1什么是超平面">（1）什么是超平面</h3>
 <blockquote>
 <p>超平面是n维欧氏空间中余维度等于一的线性子空间，也就是必须是(n-1)维度。</p>
 </blockquote>
 <p>例如在一维数轴中，点可以将数轴划分为两个部分，在二维平面中，一条直线可以将平面区域划分为两个部分，在三维空间中，一个平面可以将空间划分为两个不同的部分...扩展到n维，则有超平面的概念。</p>
-<h2 id="2超平面的方程形式">（2）超平面的方程形式</h2>
+<h3 id="2超平面的方程形式">（2）超平面的方程形式</h3>
 <p>由直线方程ax + by + c = 0</p>
 <p>平面方程ax + by + cz + d = 0</p>
 <p>不难类推出超平面方程</p>
@@ -38,7 +38,7 @@
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span></span></p>
 <p>其中，w应当是该超平面的一个法向量。</p>
 <p>由此我们可以看出，所谓感知机的分类器，就是要找到这样一个超平面，使得数据集的正实例点和负实例点被完全正确的划分到该超平面的两侧。</p>
-<h2 id="3超平面距离公式">（3）超平面距离公式</h2>
+<h3 id="3超平面距离公式">（3）超平面距离公式</h3>
 <figure data-type="image" tabindex="1"><img src="https://zy-zzf2000.github.io//post-images/1579250261999.png" alt="" loading="lazy"></figure>
 <p>如图，E为超平面内一点，F为超平面外一点，则F到平面距离为：</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo>=</mo><mfrac><mrow><mi mathvariant="normal">∣</mi><mi>w</mi><msub><mi>x</mi><mn>0</mn></msub><mo>+</mo><mi>b</mi><mi mathvariant="normal">∣</mi></mrow><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi>w</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">d=\frac{|wx_0+b|}{||w||}
