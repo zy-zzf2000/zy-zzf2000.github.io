@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2020-01-18T10:38:03.533Z</updated>
+    <updated>2020-01-18T10:38:46.657Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io/atom.xml"/>
@@ -10,6 +10,26 @@
     <logo>https://zy-zzf2000.github.io/images/avatar.png</logo>
     <icon>https://zy-zzf2000.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 小张的网站</rights>
+    <entry>
+        <title type="html"><![CDATA[K近邻补充]]></title>
+        <id>https://zy-zzf2000.github.io/post/k-jin-lin-bu-chong</id>
+        <link href="https://zy-zzf2000.github.io/post/k-jin-lin-bu-chong">
+        </link>
+        <updated>2020-01-18T10:38:16.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-单元概念">一、单元概念</h2>
+<blockquote>
+<p>书p50:对每个训练实例点xi，距离该点比其他点更近的所有点组成一个区域，叫做单元（cell）。</p>
+</blockquote>
+<p>对于这句话个人的理解是，训练实例xi的单元是这样的点组成的集合，即集合中任意一个点到训练集中其他点的距离都要大于这个点到xi的距离。</p>
+<h2 id="二-kd树">二、kd树</h2>
+<h4 id="1kd树的概念">（1）kd树的概念</h4>
+<p>kd树即k-dimensional tree，其k代表的是训练实例的维数，与k近邻法的k意义不同。本质上是二叉查找树在k维的扩展。其节点对应于一个n维的超矩形区域，储存的是一个子区域的划分。</p>
+<h4 id="2维数的选择">（2）维数的选择</h4>
+<p>在书中，维数的选择是从1，2，3...循环选择的，即对于深度为j的结点，选择第l=j%k+1作为切分的坐标轴。除此之外，还有一种被称作是 最大方差法 的维度选择法，它的基本做法是每次在选择维度时，我们总是倾向于选择那些方差最大的的维度。这样做的基本思想是，数据在某个维度越分散，则越易于区分；越密集，则区分就越为困难。</p>
+<h4 id="3近邻搜索">（3）近邻搜索</h4>
+<p>近邻搜索首先找到包含待预测点x的区域的叶节点，并以此叶结点作为x的近似最近邻。之后不断递归，找当前近似最近邻的另一个兄弟节点所代表的区域内是否与以 x为圆心，r=||x-当前最近邻|| 的圆相交，若相交部分有点，则以该点为新的近似最近邻；若无则返回上一次继续递归。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[感知机补充]]></title>
         <id>https://zy-zzf2000.github.io/post/preceptron</id>
@@ -456,32 +476,6 @@ int main(){
 cin.tie(NULL);
 </code></pre>
 <p>可以使cin与cout的运行效率几乎与scanf和printf一样。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[c++ sort函数的基本应用]]></title>
-        <id>https://zy-zzf2000.github.io/post/sort</id>
-        <link href="https://zy-zzf2000.github.io/post/sort">
-        </link>
-        <updated>2019-10-07T14:02:18.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="1-sort函数的基本格式">1、sort函数的基本格式：</h1>
-<p>sort（首元素地址，尾元素地址的下一个地址，cmp（非必填））</p>
-<hr>
-<h1 id="2-cmp函数">2、cmp函数</h1>
-<p>cmp函数是一个自定义的比较函数，它返回一个bool值，用于返回两个类在sort函数中的大小关系。如：</p>
-<pre><code class="language-c++">bool cmp(student a,student b){
-	if(a.score!=b.score){
-		return a.score&gt;b.score;
-	}
-	else{
-		return a.id&lt;b.id;
-	}
-}
-</code></pre>
-<p>这段代码表示当学生成绩不一致时，按成绩从大到小排序，否则，按学号从小到大排序。</p>
-<hr>
-<h1 id="3-当排序有并列时应该怎么样做">3、当排序有并列时，应该怎么样做。</h1>
-<p>让排序后的第一个元素排名为1，定义一个int 型变量r=1，遍历所有元素，当当前元素分数等于上一个元素时，当前元素排名也等于上一个元素，否则令元素排名为r。</p>
 ]]></content>
     </entry>
 </feed>

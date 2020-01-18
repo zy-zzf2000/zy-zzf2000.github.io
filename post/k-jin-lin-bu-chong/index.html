@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Union Find 的Quick find实现 | 小张的网站</title>
+<title>K近邻补充 | 小张的网站</title>
 <meta name="description" content="莫道君行早，更有早行人">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -92,69 +92,29 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Union Find 的Quick find实现</h2>
-            <div class="post-date">2019-09-09</div>
+            <h2 class="post-title">K近邻补充</h2>
+            <div class="post-date">2020-01-18</div>
             
             <div class="post-content">
-              <blockquote>
-<p>Union FInd，在我个人的理解，就是点与点之间是否互相连通的问题。具体关于问题的描述，可以<a href="https://blog.csdn.net/guoziqing506/article/details/78752557">参考这里</a>动态连通性的前三段，或者Algorithm 4th的P136-1.5.1</p>
+              <h2 id="一-单元概念">一、单元概念</h2>
+<blockquote>
+<p>书p50:对每个训练实例点xi，距离该点比其他点更近的所有点组成一个区域，叫做单元（cell）。</p>
 </blockquote>
-<h1 id="1quick-find实现的基本想法">（1）Quick find实现的基本想法：</h1>
-<p>通过一个整数数组来保存图中所有的点及它们之间的关系，更具体来说，两个点P与Q是连通的，当且仅当索引P与索引Q在数组中所对应的项是相同的。这样说可能有点难以理解，下面看一个例子：<br>
-<img src="https://zy-zzf2000.github.io//post-images/1568043231866.png" alt="" loading="lazy"><br>
-图中的数组保存了10个点的关系，可以看到，{0，5，6}，{1，2，7}，{8，3，4，9}分别是三个连通分支，所以id【0】=id【5】=id【6】=0...</p>
-<hr>
-<h1 id="2实现代码">（2）实现代码：</h1>
-<pre><code class="language-java">public class QuickFindUF {
-	private int[] id;
-	
-	public QuickFindUF(int N) {//输入元素个数N，进行初始化
-		id=new int[N];
-		for(int i=0;i&lt;N;i++) {
-			id[i]=i;
-		}
-	}
-	
-	public boolean Isconnected(int p,int q) { //如果两个索引对应的值相等，则说明pq相连
-		return id[p]==id[q];
-	}
-	
-	public void union(int p,int q) {//实现将pq相连的方法，在这里，我们让数组中所有值等于id【p】的索引的值都改为id【q】，因为一个元素如果与连通分支中的一个元素相连，那么它与该连通分支的其他元素也相连。
-		int pid=id[p];
-		int qid=id[q];
-		for(int i=0;i&lt;id.length;i++) {
-			if(id[i]==pid) {
-				id[i]=qid;
-			}
-		}
-	}
-	
-	public static void main(String[] args) {
-		QuickFindUF demo=new QuickFindUF(10);
-		demo.union(0, 1);
-		demo.union(1, 2);
-		demo.union(2, 3);
-		demo.union(4, 5);
-		demo.union(5, 6);
-		demo.union(6, 7);
-		demo.union(7, 8);
-		System.out.println(&quot;0 and 3&quot;+demo.Isconnected(0, 3));
-		System.out.println(&quot;4 and 8&quot;+demo.Isconnected(4, 8));
-		System.out.println(&quot;0 and 9&quot;+demo.Isconnected(0, 9));
-	}
-}
-</code></pre>
-<hr>
-<h1 id="3quick-find实现的优缺点">(3)Quick Find实现的优缺点：</h1>
-<p>优点：查询两个点是否连接的效率非常高，仅需访问数组一次。<br>
-缺点：连接两个点是效率极低，需要历遍整个数组，算法效率为N乘以某个常数</p>
+<p>对于这句话个人的理解是，训练实例xi的单元是这样的点组成的集合，即集合中任意一个点到训练集中其他点的距离都要大于这个点到xi的距离。</p>
+<h2 id="二-kd树">二、kd树</h2>
+<h4 id="1kd树的概念">（1）kd树的概念</h4>
+<p>kd树即k-dimensional tree，其k代表的是训练实例的维数，与k近邻法的k意义不同。本质上是二叉查找树在k维的扩展。其节点对应于一个n维的超矩形区域，储存的是一个子区域的划分。</p>
+<h4 id="2维数的选择">（2）维数的选择</h4>
+<p>在书中，维数的选择是从1，2，3...循环选择的，即对于深度为j的结点，选择第l=j%k+1作为切分的坐标轴。除此之外，还有一种被称作是 最大方差法 的维度选择法，它的基本做法是每次在选择维度时，我们总是倾向于选择那些方差最大的的维度。这样做的基本思想是，数据在某个维度越分散，则越易于区分；越密集，则区分就越为困难。</p>
+<h4 id="3近邻搜索">（3）近邻搜索</h4>
+<p>近邻搜索首先找到包含待预测点x的区域的叶节点，并以此叶结点作为x的近似最近邻。之后不断递归，找当前近似最近邻的另一个兄弟节点所代表的区域内是否与以 x为圆心，r=||x-当前最近邻|| 的圆相交，若相交部分有点，则以该点为新的近似最近邻；若无则返回上一次继续递归。</p>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://zy-zzf2000.github.io/tag/jmC06bpXo" class="tag">
-                    算法
+                  <a href="https://zy-zzf2000.github.io/tag/zOZWCeof-" class="tag">
+                    ”那是松鼠吗?“
                   </a>
                 
               </div>
@@ -162,9 +122,9 @@
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zy-zzf2000.github.io/post/Iterable">
+                <a href="https://zy-zzf2000.github.io/post/preceptron">
                   <h3 class="post-title">
-                    Java语言中如何使一个类可迭代
+                    感知机补充
                   </h3>
                 </a>
               </div>
