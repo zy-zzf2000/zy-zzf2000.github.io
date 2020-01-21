@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://zy-zzf2000.github.io/</id>
+    <id>http://localhost:4000</id>
     <title>小张的网站</title>
-    <updated>2020-01-21T04:59:00.066Z</updated>
+    <updated>2020-01-21T04:59:36.788Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
-    <link rel="self" href="https://zy-zzf2000.github.io/atom.xml"/>
+    <link rel="alternate" href="http://localhost:4000"/>
+    <link rel="self" href="http://localhost:4000/atom.xml"/>
     <subtitle>莫道君行早，更有早行人</subtitle>
-    <logo>https://zy-zzf2000.github.io/images/avatar.png</logo>
-    <icon>https://zy-zzf2000.github.io/favicon.ico</icon>
+    <logo>http://localhost:4000/images/avatar.png</logo>
+    <icon>http://localhost:4000/favicon.ico</icon>
     <rights>All rights reserved 2020, 小张的网站</rights>
     <entry>
         <title type="html"><![CDATA[朴素贝叶斯法补充]]></title>
-        <id>https://zy-zzf2000.github.io/post/Bayes</id>
-        <link href="https://zy-zzf2000.github.io/post/Bayes">
+        <id>http://localhost:4000/post/-Bayes</id>
+        <link href="http://localhost:4000/post/-Bayes">
         </link>
         <updated>2020-01-20T03:15:44.000Z</updated>
         <content type="html"><![CDATA[<h2 id="一-如何理解条件概率分布具有指数级别的参数">一、如何理解条件概率分布具有指数级别的参数</h2>
@@ -40,7 +40,7 @@
 <p>所谓似然，就是通过n个随机变量的实验结果来估计随机变量的参数。其中使得当前实验结果出现概率最大的取值就被称作是极大似然估计。<a href="https://www.zhihu.com/question/24124998/answer/242682386">具体可以参考这里</a></p>
 <h4 id="三拉格朗日乘子法">（三）拉格朗日乘子法</h4>
 <p>拉格朗日乘子法是是一种寻找变量受一个或多个条件所限制的多元函数的极值的方法。在这里，我仅仅从二维层面直观上对其进行理解：<br>
-<img src="https://zy-zzf2000.github.io//post-images/1579582388602.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1579582388602.jpg" alt="" loading="lazy"><br>
 如图所示，虚线代表了待求极值的函数f（x，y）的等高线，红色曲线代表了约束函数g（x，y）=0。在施加约束条件之前，我们可以在平面内任意取点，得到不同的函数值；而在施加约束条件之后，我们就只能取g（x，y）上的点。不难理解，我们所要求的极值点一定是g（x，y）=0和某条等高线的切点。因为只要f（x，y）的一条等高线与g（x，y）=0相交，那么就一定存在取值更小（或更大）的等高线与g（x，y）=0相交，因此极值一定在切点处取得。由于两条曲线f（x，y）=C（C即为我们所求的极值）与g（x，y）=0在极值点相切，那么它们的法向量必然只相差一个常数，即有：</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∇</mi><mi>f</mi><mi mathvariant="normal">（</mi><mi>x</mi><mi mathvariant="normal">，</mi><mi>y</mi><mi mathvariant="normal">）</mi><mo>=</mo><mo>−</mo><mi>λ</mi><mi mathvariant="normal">∇</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\nabla f（x，y）=-\lambda\nabla g(x,y)
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">∇</span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mord cjk_fallback">（</span><span class="mord mathdefault">x</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord cjk_fallback">）</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mord mathdefault">λ</span><span class="mord">∇</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></span></p>
@@ -52,13 +52,13 @@
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">λ</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
 <p>然后分别用F对x1，x2...,xn求偏导，再联立约束条件就能求出极值点。</p>
 <h2 id="三-先验概率的推导">三、先验概率的推导</h2>
-<figure data-type="image" tabindex="1"><img src="https://zy-zzf2000.github.io//post-images/1579582558699.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1579582558699.jpg" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[K近邻补充]]></title>
-        <id>https://zy-zzf2000.github.io/post/k-jin-lin-bu-chong</id>
-        <link href="https://zy-zzf2000.github.io/post/k-jin-lin-bu-chong">
+        <id>http://localhost:4000/post/k-jin-lin-bu-chong</id>
+        <link href="http://localhost:4000/post/k-jin-lin-bu-chong">
         </link>
         <updated>2020-01-18T10:38:16.000Z</updated>
         <content type="html"><![CDATA[<h2 id="一-单元概念">一、单元概念</h2>
@@ -77,8 +77,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[感知机补充]]></title>
-        <id>https://zy-zzf2000.github.io/post/preceptron</id>
-        <link href="https://zy-zzf2000.github.io/post/preceptron">
+        <id>http://localhost:4000/post/preceptron</id>
+        <link href="http://localhost:4000/post/preceptron">
         </link>
         <updated>2020-01-17T02:09:18.000Z</updated>
         <content type="html"><![CDATA[<p>##一、超平面</p>
@@ -104,7 +104,7 @@
 <p>其中，w应当是该超平面的一个法向量。</p>
 <p>由此我们可以看出，所谓感知机的分类器，就是要找到这样一个超平面，使得数据集的正实例点和负实例点被完全正确的划分到该超平面的两侧。</p>
 <h3 id="3超平面距离公式">（3）超平面距离公式</h3>
-<figure data-type="image" tabindex="1"><img src="https://zy-zzf2000.github.io//post-images/1579250261999.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1579250261999.png" alt="" loading="lazy"></figure>
 <p>如图，E为超平面内一点，F为超平面外一点，则F到平面距离为：</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo>=</mo><mfrac><mrow><mi mathvariant="normal">∣</mi><mi>w</mi><msub><mi>x</mi><mn>0</mn></msub><mo>+</mo><mi>b</mi><mi mathvariant="normal">∣</mi></mrow><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi>w</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">d=\frac{|wx_0+b|}{||w||}
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">∣</span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord">∣</span><span class="mord">∣</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">b</span><span class="mord">∣</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
@@ -161,8 +161,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[给忙碌者的天体物理]]></title>
-        <id>https://zy-zzf2000.github.io/post/gei-mang-lu-zhe-de-tian-ti-wu-li</id>
-        <link href="https://zy-zzf2000.github.io/post/gei-mang-lu-zhe-de-tian-ti-wu-li">
+        <id>http://localhost:4000/post/gei-mang-lu-zhe-de-tian-ti-wu-li</id>
+        <link href="http://localhost:4000/post/gei-mang-lu-zhe-de-tian-ti-wu-li">
         </link>
         <updated>2020-01-11T02:57:49.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -173,8 +173,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[帆]]></title>
-        <id>https://zy-zzf2000.github.io/post/fan</id>
-        <link href="https://zy-zzf2000.github.io/post/fan">
+        <id>http://localhost:4000/post/fan</id>
+        <link href="http://localhost:4000/post/fan">
         </link>
         <updated>2020-01-09T14:52:47.000Z</updated>
         <content type="html"><![CDATA[<p>一艘船孤独的航行在海上<br>
@@ -186,8 +186,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Sonnet 18]]></title>
-        <id>https://zy-zzf2000.github.io/post/sonnet-18</id>
-        <link href="https://zy-zzf2000.github.io/post/sonnet-18">
+        <id>http://localhost:4000/post/sonnet-18</id>
+        <link href="http://localhost:4000/post/sonnet-18">
         </link>
         <updated>2019-11-04T12:24:59.000Z</updated>
         <content type="html"><![CDATA[<p>to be continue...</p>
@@ -195,8 +195,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[赤壁赋]]></title>
-        <id>https://zy-zzf2000.github.io/post/chibifu</id>
-        <link href="https://zy-zzf2000.github.io/post/chibifu">
+        <id>http://localhost:4000/post/chibifu</id>
+        <link href="http://localhost:4000/post/chibifu">
         </link>
         <updated>2019-11-02T06:04:44.000Z</updated>
         <content type="html"><![CDATA[<p>壬戌之秋，七月既望，苏子与客泛舟游于赤壁之下。清风徐来，水波不兴。举酒属客，诵明月之诗，歌窈窕之章。少焉，月出于东山之上，徘徊于斗牛之间。白露横江，水光接天。纵一苇之所如，凌万顷之茫然。浩浩乎如冯虚御风，而不知其所止；飘飘乎如遗世独立，羽化而登仙。</p>
@@ -208,8 +208,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[散列]]></title>
-        <id>https://zy-zzf2000.github.io/post/san-lie</id>
-        <link href="https://zy-zzf2000.github.io/post/san-lie">
+        <id>http://localhost:4000/post/san-lie</id>
+        <link href="http://localhost:4000/post/san-lie">
         </link>
         <updated>2019-10-31T04:54:14.000Z</updated>
         <content type="html"><![CDATA[<p>待续...</p>
@@ -217,8 +217,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[KMP算法-从PMT角度理解]]></title>
-        <id>https://zy-zzf2000.github.io/post/KMP</id>
-        <link href="https://zy-zzf2000.github.io/post/KMP">
+        <id>http://localhost:4000/post/KMP</id>
+        <link href="http://localhost:4000/post/KMP">
         </link>
         <updated>2019-10-19T14:43:45.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -231,14 +231,14 @@
 <h1 id="2-next数组的由来">2、next数组的由来</h1>
 <p>在课本中，KMP算法是由BF算法改进而来的。但我个人认为这样并不好理解（其实是我当初看的时候没看懂，结果上课又没听懂）。在网上查阅之后，发现从PMT数组的角度似乎能更好的理解next数组。</p>
 <p>PMT数组，即部分匹配表(Partial Match Table)，与next数组一样，对于模式字符串的每一位，它都有一个对应的值，如下图：<br>
-<img src="https://zy-zzf2000.github.io//post-images/1572084892998.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572084892998.jpg" alt="" loading="lazy"><br>
 通俗的说，next数组里的值就是模式字符串当前位置子串中，前缀与后缀最大重复元素的长度。这样说也许还是难以理解，让我们用上图来举几个例子。<br>
 可以看到，PMT【1】=0，这是因为对于字串“ab”，它的前缀只有‘a’，后缀只有‘b’，因此没有重复部分；PMT【2】=1，这是因为对于字串“aba”，它的前缀有“a”、“ab”，后缀有“ba”、“a”，其中最大重复元素位“a”，因此最大重复元素的长度=PMT值=1。以此类推...</p>
 <p>PMT数组有什么用呢？PMT数组可以用来帮我们省去一些不必要的比较。如下图所示：<br>
-<img src="https://zy-zzf2000.github.io//post-images/1572085486261.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572085486261.jpg" alt="" loading="lazy"><br>
 在图（a）中，主串与模式字符串即将发生失配。由PMT数组我们知道，对于模式字符串的子串“ababab”（即指针j前的字串），它的PMT值为4（PMT【j-1】），也就是说，它的前缀与后缀有4位是重复的。而主串与模式字符串失配前的每一位都是一样的，于是我们可以得出，主串的i指针之前的4位，相当于“ababab”的后缀，而模式字符串的前四位，相当于“ababab”的前缀，他们也是相等的。既然模式字符串的前四位已经相等了，那么我们在下一次进行比较的时候，就没有必要再对它们进行比较了，如图（b）所示，我们保持i指针不变，直接将j指针移动到第五位，直接从模式字符串的第五位开始比较。</p>
 <p>从上面我们可以看出，如果再比较时，考虑PMT数组，那么每当发生失配时，我们的j指针就不必回溯到0，只需要回溯到PMT【j-1】所指示的位置。为了编程方便，我们将PMT数组整体后移一位，这样就得到了next数组。原来next数组只是一个提供便利的“衍生物”。如下图所示：<br>
-<img src="https://zy-zzf2000.github.io//post-images/1572086367096.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572086367096.jpg" alt="" loading="lazy"><br>
 在上图中可以发现next【0】被设置为了-1，这是为了便于编程，使我们知道主串在第一位便发生了失配，这时候，i指针就要向后移动一位。</p>
 <hr>
 <h1 id="3-代码">3、代码</h1>
@@ -268,11 +268,11 @@
 </blockquote>
 <p>我只补充一点，那就是匹配成功之后，模式字符串的指针j+1就是所谓最长长度，也就是next的值。</p>
 <p>下面是几张图片：<br>
-<img src="https://zy-zzf2000.github.io//post-images/1572100503477.jpg" alt="" loading="lazy"><br>
-<img src="https://zy-zzf2000.github.io//post-images/1572100507615.jpg" alt="" loading="lazy"><br>
-<img src="https://zy-zzf2000.github.io//post-images/1572100511040.jpg" alt="" loading="lazy"><br>
-<img src="https://zy-zzf2000.github.io//post-images/1572100514912.jpg" alt="" loading="lazy"><br>
-<img src="https://zy-zzf2000.github.io//post-images/1572100518437.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572100503477.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572100507615.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572100511040.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572100514912.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572100518437.jpg" alt="" loading="lazy"><br>
 实际上，无论什么时候，都有next【0】=-1，next【1】=0.这是因为，next数组是由PMT数组右移一位得来，我们约定next【0】=-1，便于编程；而next【1】的值，实际上是主串第一个字符最大重复元素的长度，显然为0.<br>
 值得注意的是，计算next数组时，要从第一位开始，即第0位不参与，由于next数组是由PMT数组右移一位得来，那么，第一位所得到的值实际上是next【2】的值。<br>
 这两段也就解释了为什么上图是从next【2】开始计算的。</p>
@@ -296,8 +296,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[逆波兰算法实现简单优先计算器]]></title>
-        <id>https://zy-zzf2000.github.io/post/逆波兰</id>
-        <link href="https://zy-zzf2000.github.io/post/逆波兰">
+        <id>http://localhost:4000/post/逆波兰</id>
+        <link href="http://localhost:4000/post/逆波兰">
         </link>
         <updated>2019-10-17T14:43:18.000Z</updated>
         <content type="html"><![CDATA[<blockquote>

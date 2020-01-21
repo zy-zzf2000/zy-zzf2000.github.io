@@ -9,9 +9,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://zy-zzf2000.github.io//favicon.ico?v=1579582643762">
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico?v=1579582769979">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-<link rel="stylesheet" href="https://zy-zzf2000.github.io//styles/main.css">
+<link rel="stylesheet" href="http://localhost:4000/styles/main.css">
 
 
 
@@ -29,8 +29,8 @@
       <div class="sidebar" :class="{ 'full-height': menuVisible }">
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
-      <a class="site-title-container" href="https://zy-zzf2000.github.io/">
-        <img src="https://zy-zzf2000.github.io//images/avatar.png?v=1579582643762" class="site-logo">
+      <a class="site-title-container" href="http://localhost:4000">
+        <img src="http://localhost:4000/images/avatar.png?v=1579582769979" class="site-logo">
         <h1 class="site-title">小张的网站</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -83,7 +83,7 @@
       莫道君行早，更有早行人
     </div>
     <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zy-zzf2000.github.io//atom.xml" target="_blank">RSS</a>
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="http://localhost:4000/atom.xml" target="_blank">RSS</a>
     </div>
   </div>
 </div>
@@ -106,14 +106,14 @@
 <h1 id="2-next数组的由来">2、next数组的由来</h1>
 <p>在课本中，KMP算法是由BF算法改进而来的。但我个人认为这样并不好理解（其实是我当初看的时候没看懂，结果上课又没听懂）。在网上查阅之后，发现从PMT数组的角度似乎能更好的理解next数组。</p>
 <p>PMT数组，即部分匹配表(Partial Match Table)，与next数组一样，对于模式字符串的每一位，它都有一个对应的值，如下图：<br>
-<img src="https://zy-zzf2000.github.io//post-images/1572084892998.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572084892998.jpg" alt="" loading="lazy"><br>
 通俗的说，next数组里的值就是模式字符串当前位置子串中，前缀与后缀最大重复元素的长度。这样说也许还是难以理解，让我们用上图来举几个例子。<br>
 可以看到，PMT【1】=0，这是因为对于字串“ab”，它的前缀只有‘a’，后缀只有‘b’，因此没有重复部分；PMT【2】=1，这是因为对于字串“aba”，它的前缀有“a”、“ab”，后缀有“ba”、“a”，其中最大重复元素位“a”，因此最大重复元素的长度=PMT值=1。以此类推...</p>
 <p>PMT数组有什么用呢？PMT数组可以用来帮我们省去一些不必要的比较。如下图所示：<br>
-<img src="https://zy-zzf2000.github.io//post-images/1572085486261.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572085486261.jpg" alt="" loading="lazy"><br>
 在图（a）中，主串与模式字符串即将发生失配。由PMT数组我们知道，对于模式字符串的子串“ababab”（即指针j前的字串），它的PMT值为4（PMT【j-1】），也就是说，它的前缀与后缀有4位是重复的。而主串与模式字符串失配前的每一位都是一样的，于是我们可以得出，主串的i指针之前的4位，相当于“ababab”的后缀，而模式字符串的前四位，相当于“ababab”的前缀，他们也是相等的。既然模式字符串的前四位已经相等了，那么我们在下一次进行比较的时候，就没有必要再对它们进行比较了，如图（b）所示，我们保持i指针不变，直接将j指针移动到第五位，直接从模式字符串的第五位开始比较。</p>
 <p>从上面我们可以看出，如果再比较时，考虑PMT数组，那么每当发生失配时，我们的j指针就不必回溯到0，只需要回溯到PMT【j-1】所指示的位置。为了编程方便，我们将PMT数组整体后移一位，这样就得到了next数组。原来next数组只是一个提供便利的“衍生物”。如下图所示：<br>
-<img src="https://zy-zzf2000.github.io//post-images/1572086367096.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572086367096.jpg" alt="" loading="lazy"><br>
 在上图中可以发现next【0】被设置为了-1，这是为了便于编程，使我们知道主串在第一位便发生了失配，这时候，i指针就要向后移动一位。</p>
 <hr>
 <h1 id="3-代码">3、代码</h1>
@@ -143,11 +143,11 @@
 </blockquote>
 <p>我只补充一点，那就是匹配成功之后，模式字符串的指针j+1就是所谓最长长度，也就是next的值。</p>
 <p>下面是几张图片：<br>
-<img src="https://zy-zzf2000.github.io//post-images/1572100503477.jpg" alt="" loading="lazy"><br>
-<img src="https://zy-zzf2000.github.io//post-images/1572100507615.jpg" alt="" loading="lazy"><br>
-<img src="https://zy-zzf2000.github.io//post-images/1572100511040.jpg" alt="" loading="lazy"><br>
-<img src="https://zy-zzf2000.github.io//post-images/1572100514912.jpg" alt="" loading="lazy"><br>
-<img src="https://zy-zzf2000.github.io//post-images/1572100518437.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572100503477.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572100507615.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572100511040.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572100514912.jpg" alt="" loading="lazy"><br>
+<img src="http://localhost:4000/post-images/1572100518437.jpg" alt="" loading="lazy"><br>
 实际上，无论什么时候，都有next【0】=-1，next【1】=0.这是因为，next数组是由PMT数组右移一位得来，我们约定next【0】=-1，便于编程；而next【1】的值，实际上是主串第一个字符最大重复元素的长度，显然为0.<br>
 值得注意的是，计算next数组时，要从第一位开始，即第0位不参与，由于next数组是由PMT数组右移一位得来，那么，第一位所得到的值实际上是next【2】的值。<br>
 这两段也就解释了为什么上图是从next【2】开始计算的。</p>
@@ -172,7 +172,7 @@
             
               <div class="tag-container">
                 
-                  <a href="https://zy-zzf2000.github.io/tag/jmC06bpXo" class="tag">
+                  <a href="http://localhost:4000/tag/jmC06bpXo" class="tag">
                     算法
                   </a>
                 
@@ -181,7 +181,7 @@
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zy-zzf2000.github.io/post/逆波兰">
+                <a href="http://localhost:4000/post/逆波兰">
                   <h3 class="post-title">
                     逆波兰算法实现简单优先计算器
                   </h3>
