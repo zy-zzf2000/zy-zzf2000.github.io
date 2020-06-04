@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zy-zzf2000.github.io/</id>
     <title>小张的网站</title>
-    <updated>2020-06-04T12:49:50.921Z</updated>
+    <updated>2020-06-04T16:53:35.678Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zy-zzf2000.github.io/"/>
     <link rel="self" href="https://zy-zzf2000.github.io/atom.xml"/>
@@ -33,7 +33,7 @@ Each approach evolved rapidly and converged so that each borrowed techniques fro
 <p>The advocates of semiconductor integrated circuitry are already using the improved characteristics of thin-film resistors by applying such films directly to an active semiconductor substrate. Those advocating a technology based upon films are developing sophisticated techniques for the attachment of active semiconductor devices to the passive film arrays.</p>
 <p>Both approaches have worked well and are being used in equipment today.</p>
 <p>II. THE ESTABLISHMENT<br>
-主要叙述了集成电子学相对于包括晶体管在内的传统电子制造的优势<br>
+主要叙述了集成电子学相对于包括晶体管在内的传统电子制造的优势,高可靠性，降低了制造以及设计成本，提高性能<br>
 Integrated electronics is established today. Its techniques are almost mandatory for new military systems, since the reliability, size, and weight required by some of them is achievable only with integration. Such programs as Apollo, for manned moon flight, have demonstrated the reliability of integrated electronics by showing that complete circuit functions are as free from failure as the best individual transistors</p>
 <p>Most companies in the commercial computer field have machines in design or in early production employing integrated electronics. These machines cost less and perform better than those which use “conventional” electronics.</p>
 <p>Instruments of various sorts, especially the rapidly increasing numbers employing digital techniques, are starting to use integration because it cuts costs of both manufacture and design.</p>
